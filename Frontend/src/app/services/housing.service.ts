@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Property } from 'src/data/property';
 import { Properties } from 'src/data/mock-properties';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 // import {map} from 'rxjs/operators';
 
 @Injectable({
@@ -12,7 +12,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class HousingService {
 
 
-  private propertyUrl = 'src/data/properties.json'
+  private propertyUrl = 'src/data/properties.json';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -23,6 +23,10 @@ export class HousingService {
   getProperties(): Observable<Property[]> {
     return of(Properties)
   }
+
+  // getHttpProperties(): Observable<HttpResponse<Property[]>> {
+  //   return this.http.get<Property[]>(this.propertyUrl, {observe: 'response'});
+  // }
 
   // getAllProperties(){
   //   console.log("2");

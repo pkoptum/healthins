@@ -14,9 +14,11 @@ export class PropertyListComponent implements OnInit {
   properties: Property[] = [];
 
 
-  constructor(private housingService: HousingService) { }
+  constructor(private http: HttpClient, private housingService: HousingService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    // this.housingService.getHttpProperties().subscribe(resp => console.log(resp))
+
     this.housingService.getProperties().subscribe(
       properties=>this.properties=properties
     );
