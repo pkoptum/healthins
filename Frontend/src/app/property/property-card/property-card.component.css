@@ -30,6 +30,7 @@
   right: 0;
   margin-left: auto;
   margin-right: auto; */
+  transition-duration: 500ms;
   opacity: 0;
 }
 

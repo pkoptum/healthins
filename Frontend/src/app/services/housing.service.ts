@@ -3,7 +3,6 @@ import { Observable, of } from 'rxjs';
 import { Property } from 'src/data/property';
 import { Properties } from 'src/data/mock-properties';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-// import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
