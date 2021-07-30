@@ -20,4 +20,9 @@ export class PropertyDetailComponent implements OnInit {
     this.router.navigate(['property-detail/' + this.propertyId])
   }
 
+  onSelectBack(){
+    this.propertyId -= 1;
+    this.router.navigate(['property-detail/' + this.propertyId])
+  }
+  
 }

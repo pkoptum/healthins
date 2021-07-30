@@ -11,6 +11,9 @@ import { PropertyListComponent } from './property/property-list/property-list.co
 import { HousingService } from './services/housing.service';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,15 @@ import { PropertyDetailComponent } from './property/property-detail/property-det
       PropertyListComponent,
       PropertyCardComponent,
       AddPropertyComponent,
-      PropertyDetailComponent
+      PropertyDetailComponent,
+      UserLoginComponent,
+      UserRegisterComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     HousingService

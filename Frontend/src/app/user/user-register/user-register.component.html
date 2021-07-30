@@ -1,0 +1,146 @@
+<div class="row">
+    <div class="col-sm-12 col-md-8 m-auto">
+        <div class="card m-auto">
+            <div class="card-header text-white bg-secondary register-header">
+                Register
+            </div>
+
+            <div class="card-body">
+                <form [formGroup]="registrationForm">
+
+
+                    <div class="row">
+                        <div class="form-group col-md-6 col-sm-12">
+                            <input type="text" class="form-control" formControlName="firstName" placeholder="First Name" [class.is-invalid]="firstName!.invalid && firstName!.touched"/>
+                            <div *ngIf="firstName!.invalid && firstName!.touched" class="alert alert-danger">
+                                <small class="text-danger">Name is required</small>
+                            </div>
+                        </div>  
+                        <div class="form-group col-md-6 col-sm-12">
+                            <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName"/>
+                            <div *ngIf="lastName!.invalid && lastName!.touched" class="alert alert-danger">
+                                <small class="text-danger">Name is required</small>
+                            </div>                            
+                        </div>                      
+                    </div>
+
+
+                    <div class="row">
+                    <div class="form-group col-12">
+                        <input type="text" class="form-control" formControlName="email" placeholder="Email" [class.is-invalid]="email!.invalid && email!.touched">
+                        <div *ngIf="email!.invalid && email!.touched" class="alert alert-danger">
+                            <small *ngIf="email!.errors?.required" class="text-danger">Email is required</small>
+                            <small *ngIf="email!.errors?.email" class="text-danger">Email must be in proper format</small>
+                        </div>                        
+                    </div>
+                </div>
+
+
+
+                    <div class="row">
+                        <div class="form-group col-md-6 col-sm-12">
+                            <input type="text" class="form-control" placeholder="Password" formControlName="password" [class.is-invalid]="password!.invalid && password!.touched">
+                            <div *ngIf="password!.invalid && password!.touched" class="alert alert-danger">
+                                <small *ngIf="password!.errors?.required" class="text-danger">Password is required</small>
+                                <small *ngIf="password!.errors?.minlength" class="text-danger">Password must be alteast 8 characters</small>
+                            </div>                        
+                        </div>
+                        <div class="form-group col-md-6 col-sm-12">
+                            <input type="text" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword" [class.is-invalid]="confirmPassword!.invalid && confirmPassword!.touched">
+                            <div *ngIf="confirmPassword!.invalid && confirmPassword!.touched" class="alert alert-danger">
+                                <small *ngIf="confirmPassword!.errors?.required" class="text-danger">Password is required</small>
+                                <small *ngIf="confirmPassword!.errors?.confirmpassword" class="text-danger">Password do not match the entered password</small>
+                            </div>                        
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-12">
+                            <input type="text" class="form-control" formControlName="fatherName" placeholder="Father's Name" [class.is-invalid]="fatherName!.invalid && fatherName!.touched">
+                            <div *ngIf="fatherName!.invalid && fatherName!.touched" class="alert alert-danger">
+                                <small class="text-danger">Father's Name is required</small>
+                            </div>                             
+                        </div>
+                        <div class="form-group col-md-4 col-sm-12">
+                            <input type="text" class="form-control" formControlName="motherName" placeholder="Mother's Name" [class.is-invalid]="motherName!.invalid && motherName!.touched">
+                            <div *ngIf="motherName!.invalid && motherName!.touched" class="alert alert-danger">
+                                <small class="text-danger">Mother's Name is required</small>
+                            </div>                              
+                        </div>
+                        <div class="form-group col-md-4 col-sm-12">
+                            <input type="text" class="form-control" formControlName="spouseName" placeholder="Spouse Name">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-12">
+                            <input type="text" class="form-control" formControlName="mobile" placeholder="Mobile Number" [class.is-invalid]="mobile!.invalid && mobile!.touched">
+                            <div *ngIf="mobile!.invalid && mobile!.touched" class="alert alert-danger">
+                                <small *ngIf="mobile!.errors?.required" class="text-danger">Mobile Number is required</small>
+                                <small *ngIf="mobile!.errors?.maxLength" class="text-danger">Mobile Number must contain 10 digits</small>
+                            </div>  
+                        </div>
+                        <div class="form-group col-md-4 col-sm-12">
+                            <select formControlName="gender" class="form-control">
+                                <option disabled>Select Gender</option>
+                                <option>Choose Gender</option>
+                                <option *ngFor="let gen of genderList">{{gen}}</option>
+                            </select>                            
+                            <!-- <input type="text" class="form-control" formControlName="gender" placeholder="Gender" [class.is-invalid]="gender!.invalid && gender!.touched">
+                            <div *ngIf="gender!.invalid && gender!.touched" class="alert alert-danger">
+                                <small class="text-danger">Mother's Name is required</small>
+                            </div>    -->
+                        </div>
+                        <div class="form-group col-md-4 col-sm-12"></div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="form-group col-md-6 col-sm-12">
+                            <input type="text" class="form-control" formControlName="address1" placeholder="Address Line 1" [class.is-invalid]="address1!.invalid && address1!.touched">
+                            <div *ngIf="address1!.invalid && address1!.touched" class="alert alert-danger">
+                                <small class="text-danger">Address is required</small>
+                            </div>  
+                        </div>
+                        <div class="form-group col-md-6 col-sm-12">
+                            <input type="text" class="form-control" formControlName="address2" placeholder="Address Line 2" [class.is-invalid]="address2!.invalid && address2!.touched">
+                            <div *ngIf="address2!.invalid && address2!.touched" class="alert alert-danger">
+                                <small class="text-danger">Pin Code is required</small>
+                            </div>  
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-12">
+                            <input type="text" class="form-control" formControlName="pinCode" placeholder="Pin Code" [class.is-invalid]="pinCode!.invalid && pinCode!.touched">
+                            <div *ngIf="pinCode!.invalid && pinCode!.touched" class="alert alert-danger">
+                                <small class="text-danger">Pin Code is required</small>
+                            </div>  
+                        </div>
+                        <div class="form-group col-md-4 col-sm-12">
+                            <input type="text" class="form-control" formControlName="state" placeholder="State" [class.is-invalid]="state!.invalid && state!.touched">
+                            <div *ngIf="state!.invalid && state!.touched" class="alert alert-danger">
+                                <small class="text-danger">State is required</small>
+                            </div>  
+                        </div>
+                        <div class="form-group col-md-4 col-sm-12">
+                            <input type="text" class="form-control" formControlName="country" placeholder="Country" [class.is-invalid]="country!.invalid && country!.touched">
+                            <div *ngIf="country!.invalid && country!.touched" class="alert alert-danger">
+                                <small class="text-danger">Country is required</small>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="form-group col-12 m-2">
+                        <button type="submit" class="btn btn-primary m-1" (click)="onSubmit()">Save</button>
+                        <button type="reset" class="btn btn-secondary m-1">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
