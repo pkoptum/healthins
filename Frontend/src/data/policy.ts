@@ -1,4 +1,4 @@
-export interface Property {
+export interface Policy {
   id: number;
   Name: string;
   Type: string;

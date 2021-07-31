@@ -1,6 +1,6 @@
-import { Property } from './property';
+import { Policy } from './policy';
 
-export const Properties: Property[] = [
+export const Properties: Policy[] = [
   {
     "id": 1,
     "Type": "House",

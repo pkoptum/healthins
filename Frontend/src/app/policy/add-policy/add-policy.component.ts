@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-property',
-  templateUrl: './add-property.component.html',
-  styleUrls: ['./add-property.component.css']
+  selector: 'app-add-policy',
+  templateUrl: './add-policy.component.html',
+  styleUrls: ['./add-policy.component.css']
 })
-export class AddPropertyComponent implements OnInit {
+export class AddPolicyComponent implements OnInit {
 
   constructor(private router: Router) { }
 

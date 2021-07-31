@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Property } from 'src/data/property';
-import { Properties } from 'src/data/mock-properties';
+import { Policy } from 'src/data/policy';
+import { Properties } from 'src/data/mock-policy';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 export class HousingService {
 
 
-  private propertyUrl = 'src/data/properties.json';
+  private policyUrl = 'src/data/properties.json';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -19,12 +19,12 @@ export class HousingService {
 
   constructor(private http: HttpClient) { }
 
-  getProperties(): Observable<Property[]> {
+  getProperties(): Observable<Policy[]> {
     return of(Properties)
   }
 
-  // getHttpProperties(): Observable<HttpResponse<Property[]>> {
-  //   return this.http.get<Property[]>(this.propertyUrl, {observe: 'response'});
+  // getHttpProperties(): Observable<HttpResponse<policy[]>> {
+  //   return this.http.get<policy[]>(this.policyUrl, {observe: 'response'});
   // }
 
   // getAllProperties(){
@@ -33,7 +33,7 @@ export class HousingService {
   //     map(data=> {
   //       const propertiesArray: Array<any> = [];
   //       for (const id in data) {
-  //         if(data.hasOwnProperty(id)) {
+  //         if(data.hasOwnpolicy(id)) {
   //           propertiesArray.push(data.id);
   //         }
   //       }

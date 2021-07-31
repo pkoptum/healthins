@@ -6,11 +6,11 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { PropertyCardComponent } from './property/property-card/property-card.component';
-import { PropertyListComponent } from './property/property-list/property-list.component';
+import { PolicyCardComponent } from './policy/policy-card/policy-card.component';
+import { PolicyListComponent } from './policy/policy-list/policy-list.component';
 import { HousingService } from './services/housing.service';
-import { AddPropertyComponent } from './property/add-property/add-property.component';
-import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
+import { AddPolicyComponent } from './policy/add-policy/add-policy.component';
+import { PolicyDetailComponent } from './policy/policy-detail/policy-detail.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,12 +19,12 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
       NavBarComponent,
-      PropertyListComponent,
-      PropertyCardComponent,
-      AddPropertyComponent,
-      PropertyDetailComponent,
+      PolicyListComponent,
+      PolicyCardComponent,
+      PolicyDetailComponent,
       UserLoginComponent,
-      UserRegisterComponent
+      UserRegisterComponent,
+      AddPolicyComponent
    ],
   imports: [
     BrowserModule,

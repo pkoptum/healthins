@@ -2,16 +2,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { HousingService } from 'src/app/services/housing.service';
-import { Property } from 'src/data/property';
+import { Policy } from 'src/data/policy';
 
 @Component({
-  selector: 'app-property-list',
-  templateUrl: './property-list.component.html',
-  styleUrls: ['./property-list.component.css']
+  selector: 'app-policy-list',
+  templateUrl: './policy-list.component.html',
+  styleUrls: ['./policy-list.component.css']
 })
-export class PropertyListComponent implements OnInit {
+export class PolicyListComponent implements OnInit {
 
-  properties: Property[] = [];
+  properties: Policy[] = [];
 
 
   constructor(private http: HttpClient, private housingService: HousingService) { }
