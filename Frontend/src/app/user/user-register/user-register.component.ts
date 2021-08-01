@@ -28,7 +28,7 @@ export class UserRegisterComponent implements OnInit {
     confirmPassword: new FormControl(null, Validators.required),
     mobile: new FormControl(null, [Validators.required, Validators.maxLength(10)]),
     gender: new FormControl(null, Validators.required),
-    dob: new FormControl(null, Validators.required),
+    dob: new FormControl(null),
     fatherName: new FormControl(null, Validators.required),
     motherName: new FormControl(null, Validators.required),
     spouseName: new FormControl(null),

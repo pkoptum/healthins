@@ -49,8 +49,8 @@
                             <input type="text" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword" [class.is-invalid]="confirmPassword!.invalid && confirmPassword!.touched">
                             <div *ngIf="confirmPassword!.invalid && confirmPassword!.touched" class="alert alert-danger">
                                 <small *ngIf="confirmPassword!.errors?.required" class="text-danger">Password is required</small>
-                                <small *ngIf="confirmPassword!.errors?.confirmpassword" class="text-danger">Password do not match the entered password</small>
-                            </div>                        
+                                <small *ngIf="registrationForm!.errors?.confirmpassword && (registrationForm.touched || registrationForm.dirty)" class="text-danger">Password do not match the entered password</small>
+                            </div>   
                         </div>
                     </div>
 
