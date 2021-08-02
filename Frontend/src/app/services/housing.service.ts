@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Policy } from 'src/data/policy';
-import { Properties } from 'src/data/mock-policy';
+import { Policies } from 'src/data/mock-policy';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 @Injectable({
@@ -11,16 +11,14 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 export class HousingService {
 
 
-  private policyUrl = 'src/data/properties.json';
-
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
 
   constructor(private http: HttpClient) { }
 
-  getProperties(): Observable<Policy[]> {
-    return of(Properties)
+  getPolicies(): Observable<Policy[]> {
+    return of(Policies)
   }
 
   // getHttpProperties(): Observable<HttpResponse<policy[]>> {

@@ -1,6 +1,7 @@
 export interface Policy {
-  id: number;
-  Name: string;
-  Type: string;
-  Price: number;
+  policyId: number;
+  coverName: string;
+  policyType: string;
+  sumInsured: number;
+  Description: string;
 }
