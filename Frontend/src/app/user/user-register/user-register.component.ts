@@ -9,13 +9,14 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 export class UserRegisterComponent implements OnInit {
 
   genderList: any = ['Male', 'Female', 'Other']
+  userList: any = ['Customer', 'Payer', 'Admin']
 
   //CrossValidation Function
   comparePassword: ValidatorFn = (control: AbstractControl) : ValidationErrors | null => {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
 
-    return password && confirmPassword && password.value === confirmPassword.value ? null : {identityRevealed: true };
+    return password && confirmPassword && password.value === confirmPassword.value ? null : {checkPassword: true };
   }
 
   //Creating User Registration Form
@@ -37,6 +38,7 @@ export class UserRegisterComponent implements OnInit {
     state: new FormControl(null, Validators.required),
     pinCode: new FormControl(null, Validators.required),
     country: new FormControl(null, Validators.required),
+    userType: new FormControl(null, Validators.required),
 
   }, {validators: this.comparePassword});
   
@@ -88,6 +90,9 @@ export class UserRegisterComponent implements OnInit {
   }
   get mobile(){
     return this.registrationForm.get('mobile')
+  }
+  get userType(){
+    return this.registrationForm.get('userType')
   }
 
   ngOnInit(): void {
