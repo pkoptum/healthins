@@ -8,6 +8,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 })
 export class UserRegisterComponent implements OnInit {
 
+  //Option List for Dropdowns
   genderList: any = ['Male', 'Female', 'Other']
   userList: any = ['Customer', 'Payer', 'Admin']
 
