@@ -15,6 +15,8 @@ export class AddPolicyComponent implements OnInit {
 
   onBack(){
     this.router.navigate(['/']);
+    //asa
+    //aa
   }
 
 }
