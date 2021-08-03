@@ -13,6 +13,11 @@ export class PolicyDetailComponent implements OnInit {
 
   ngOnInit() {
     this.policyId = Number(this.route.snapshot.params['id'])
+    this.route.params.subscribe(
+      (params) => {
+        this.policyId = +params['id'];
+      }
+    )
   }
 
   onSelectNext(){

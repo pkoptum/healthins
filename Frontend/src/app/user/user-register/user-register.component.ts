@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { UserServiceService } from 'src/app/services/user-service.service';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-user-register',
@@ -7,16 +9,19 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
+  
+  user!: User;
+  constructor(private userService: UserServiceService){}
+
 
   genderList: any = ['Male', 'Female', 'Other']
-  userList: any = ['Customer', 'Payer', 'Admin']
 
   //CrossValidation Function
   comparePassword: ValidatorFn = (control: AbstractControl) : ValidationErrors | null => {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
 
-    return password && confirmPassword && password.value === confirmPassword.value ? null : {checkPassword: true };
+    return password && confirmPassword && password.value === confirmPassword.value ? null : {identityRevealed: true };
   }
 
   //Creating User Registration Form
@@ -38,7 +43,6 @@ export class UserRegisterComponent implements OnInit {
     state: new FormControl(null, Validators.required),
     pinCode: new FormControl(null, Validators.required),
     country: new FormControl(null, Validators.required),
-    userType: new FormControl(null, Validators.required),
 
   }, {validators: this.comparePassword});
   
@@ -91,9 +95,6 @@ export class UserRegisterComponent implements OnInit {
   get mobile(){
     return this.registrationForm.get('mobile')
   }
-  get userType(){
-    return this.registrationForm.get('userType')
-  }
 
   ngOnInit(): void {
 
@@ -101,7 +102,23 @@ export class UserRegisterComponent implements OnInit {
 
   //Submit Form Button
   onSubmit(){
-    console.log(this.registrationForm)
+    console.log(this.registrationForm);
+    if(this.registrationForm.valid){
+
+     // this.user=Object.assign(this.user,this.registrationForm.value);
+      this.userService.addUser(this.userData());
+    }
   }
+  userData(): User{
+    return this.user = {
+      firstName: this.firstName!.value,
+      lastName: this.lastName!.value,
+      email: this.email!.value,
+      password: this.password!.value,
+
+    }
+  }
+
+  
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators, NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-user-login',
@@ -8,7 +10,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 })
 export class UserLoginComponent implements OnInit {
   public loginForm !: FormGroup;
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -23,10 +25,22 @@ export class UserLoginComponent implements OnInit {
   }
   get password(){
     return this.loginForm.get('password')
-  }  
+  } 
+  onLogin(loginForm: NgForm){
+    console.log(loginForm.value);
+    const token = this.authService.authUser(loginForm.value);
+    if(token){
+      localStorage.setItem('token',token.email)
+      console.log('login success');
+    }
+    else {
+      console.log('not succ');
+    }
 
-  onSubmit(){
-    console.log(this.loginForm)
-  }
+  } 
+
+  // onSubmit(){
+  //   console.log(this.loginForm)
+  // }
 
 }
