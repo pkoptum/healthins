@@ -7,8 +7,8 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 
 const routes: Routes = [
-  {path: '', component: PolicyListComponent, pathMatch: 'full'},
-  {path: 'rent-policy', component: PolicyListComponent},
+  {path: '', component: UserLoginComponent, pathMatch: 'full'},
+  {path: 'policies', component: PolicyListComponent},
   {path: 'add-policy', component: AddPolicyComponent},
   {path: 'policy-detail/:id', component: PolicyDetailComponent},
   {path: 'user/login', component: UserLoginComponent},
