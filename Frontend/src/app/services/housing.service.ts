@@ -17,8 +17,13 @@ export class HousingService {
 
   constructor(private http: HttpClient) { }
 
-  getPolicies(): Observable<Policy[]> {
-    return of(Policies)
+
+  getAllCities(): Observable<string []>{
+    return this.http.get<string[]>('http://localhost:5000/api/city');
+  }
+
+  getProperties(): Observable<Policy[]> {
+    return of(Properties)
   }
 
   // getHttpProperties(): Observable<HttpResponse<policy[]>> {

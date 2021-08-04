@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators, NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { HousingService } from 'src/app/services/housing.service';
+
 
 @Component({
   selector: 'app-user-login',
@@ -8,9 +11,14 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 })
 export class UserLoginComponent implements OnInit {
   public loginForm !: FormGroup;
-  constructor() { }
-
+  constructor(private authService: AuthService,private housingService: HousingService) { }
+  cityList!: any[];
   ngOnInit(): void {
+    this.housingService.getAllCities().subscribe(data=>{
+      
+      console.log(data);
+      console.log("hi");
+    });
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
@@ -23,10 +31,22 @@ export class UserLoginComponent implements OnInit {
   }
   get password(){
     return this.loginForm.get('password')
-  }  
+  } 
+  onLogin(loginForm: NgForm){
+    console.log('ffform',loginForm);
+    const token = this.authService.authUser(loginForm.value);
+    if(token){
+      localStorage.setItem('token',token.email)
+      console.log('login success');
+    }
+    else {
+      console.log('not succ');
+    }
 
-  onSubmit(){
-    console.log(this.loginForm)
-  }
+  } 
+
+  // onSubmit(){
+  //   console.log(this.loginForm)
+  // }
 
 }
