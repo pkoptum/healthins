@@ -33,7 +33,7 @@ export class UserLoginComponent implements OnInit {
     return this.loginForm.get('password')
   } 
   onLogin(loginForm: NgForm){
-    console.log(loginForm.value);
+    console.log('ffform',loginForm);
     const token = this.authService.authUser(loginForm.value);
     if(token){
       localStorage.setItem('token',token.email)
