@@ -14,6 +14,7 @@ export class UserRegisterComponent implements OnInit {
   constructor(private userService: UserServiceService){}
 
 
+  //Option List for Dropdowns
   genderList: any = ['Male', 'Female', 'Other']
 
   //CrossValidation Function

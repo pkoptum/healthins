@@ -1,0 +1,20 @@
+/* input {
+    margin: 10px auto;
+} */
+
+.add-border {
+    border: 1px solid grey;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 40px;
+}
+
+.add-header {
+    text-align: center;
+    padding-bottom: 20px;
+    color: grey;
+}
+
+label, span {
+    color: grey;
+}
