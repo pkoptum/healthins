@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Policy } from 'src/data/policy';
+import { PolicyReceive } from 'src/app/model/policy';
 
 @Component({
   selector: 'app-search-list',
@@ -8,7 +8,7 @@ import { Policy } from 'src/data/policy';
   styleUrls: ['./search-list.component.css']
 })
 export class SearchListComponent implements OnInit {
-  @Input() policies!: Observable<Policy[]>
+  @Input() policies!: Observable<PolicyReceive[]>
 
   constructor() { }
 

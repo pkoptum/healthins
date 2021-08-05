@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import { Policy } from 'src/data/policy';
 import { GetPoliciesService } from '../services/get-policies.service';
+import { PolicyReceive } from '../model/policy';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,7 +11,7 @@ import { GetPoliciesService } from '../services/get-policies.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  heroes$ !: Observable<Policy[]>
+  heroes$ !: Observable<PolicyReceive[]>
   private searchTerms = new Subject<string>();
 
   search(term: string): void{
@@ -34,7 +35,7 @@ export class NavBarComponent implements OnInit {
   loggedin()
   {
     if(localStorage.getItem('userType')){
-      console.log('logged in printin usertype',localStorage.getItem('userType'));
+      // console.log('logged in printin usertype',localStorage.getItem('userType'));
     return true;
     }else {
       return null;
