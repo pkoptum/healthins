@@ -15,6 +15,8 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserServiceService } from './services/user-service.service';
 import { AuthService } from './services/auth.service';
+import { MypoliciesComponent } from './policy/mypolicies/mypolicies.component';
+import { CustPolicyCardComponent } from './policy/cust-policy-card/cust-policy-card.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { AuthService } from './services/auth.service';
       PolicyDetailComponent,
       UserLoginComponent,
       UserRegisterComponent,
-      AddPolicyComponent
+      AddPolicyComponent,
+      MypoliciesComponent,
+      CustPolicyCardComponent
    ],
   imports: [
     BrowserModule,

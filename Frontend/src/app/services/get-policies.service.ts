@@ -14,9 +14,19 @@ export class GetPoliciesService {
   private deleteUrl = '';
   private searchUrl= '';
   private getDetailUrl = '';
+  private getMyPoliciesUrl = '';
+  private buyPolicyUrl = '';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
+  }
+
+  getMyPolicies(): Observable<Policy[]> {
+    return this.http.get<Policy[]>(this.getMyPoliciesUrl,)
+  }
+
+  buyPolicy(policy: Policy): Observable<Policy> {
+    return this.http.post<Policy>(this.buyPolicyUrl, policy, this.httpOptions)
   }
 
 

@@ -78,7 +78,7 @@ export class UserLoginComponent implements OnInit {
     //
     //
     localStorage.setItem('email','aa@aa');
-    localStorage.setItem('userType','payer');
+    localStorage.setItem('userType','customer');
     localStorage.setItem('userId','1');
     //
     //

@@ -32,6 +32,9 @@ export class PolicyDetailComponent implements OnInit {
     )
   
   }
+  onSubmit(policy: Policy): void{
+    this.getPolicies.buyPolicy(policy).subscribe()
+  }
   getPolicy(){
 
   
@@ -43,6 +46,7 @@ export class PolicyDetailComponent implements OnInit {
     // return UserArray.find((p:any) => p.email === user.email && p.password === user.password);
   }
 
+  
   // onSelectNext(){
   //   this.policyId += 1;
   //   this.router.navigate(['policy-detail/' + this.policyId])

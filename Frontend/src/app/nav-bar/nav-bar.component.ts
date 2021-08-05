@@ -34,6 +34,7 @@ export class NavBarComponent implements OnInit {
   loggedin()
   {
     if(localStorage.getItem('userType')){
+      console.log('logged in printin usertype',localStorage.getItem('userType'));
     return true;
     }else {
       return null;
@@ -52,14 +53,24 @@ export class NavBarComponent implements OnInit {
 
   isPayer()
   {
-    if(localStorage.getItem('userType'))
+    if(localStorage.getItem('userType')=='payer')
     {
       
-      return localStorage.getItem('Users.userType');
+      return localStorage.getItem('userType');
       
     }
     else{
       return null;
+    }
+  }
+  isCoust()
+  {
+    if(localStorage.getItem('userType')=="customer")
+    {
+      return true;
+    }
+    else{
+      return false;
     }
   }
 
