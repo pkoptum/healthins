@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { User } from 'src/app/model/user';
-
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
@@ -11,7 +11,7 @@ import { User } from 'src/app/model/user';
 export class UserRegisterComponent implements OnInit {
   
   user!: User;
-  constructor(private userService: UserServiceService){}
+  constructor(private userService: UserServiceService,private http: HttpClient){}
 
 
   genderList: any = ['Male', 'Female', 'Other']
@@ -43,7 +43,8 @@ export class UserRegisterComponent implements OnInit {
     state: new FormControl(null, Validators.required),
     pinCode: new FormControl(null, Validators.required),
     country: new FormControl(null, Validators.required),
-
+    userType: new FormControl(null),
+  
   }, {validators: this.comparePassword});
   
   //Initializers for all the form fields for displaying validation errors
@@ -95,6 +96,9 @@ export class UserRegisterComponent implements OnInit {
   get mobile(){
     return this.registrationForm.get('mobile')
   }
+  get userType(){
+    return this.registrationForm.get('userType')
+  }
 
   ngOnInit(): void {
 
@@ -102,6 +106,15 @@ export class UserRegisterComponent implements OnInit {
 
   //Submit Form Button
   onSubmit(){
+    var httpOptions={
+      headers:new HttpHeaders({'Content-Type':'application/json'})
+    };
+    let body =JSON.stringify(this.userData());
+
+    this.http.post<any>('http://localhost:5000/api/user/add', body,httpOptions).subscribe(data => {
+        console.log(data);
+        console.log("hi");
+    });
     console.log(this.registrationForm);
     if(this.registrationForm.valid){
 
@@ -115,7 +128,22 @@ export class UserRegisterComponent implements OnInit {
       lastName: this.lastName!.value,
       email: this.email!.value,
       password: this.password!.value,
+     
+      
+      mobile: this.mobile!.value,
+      gender: this.gender!.value,
+      dob: this.dob!.value,
+      fatherName: this.fatherName!.value,
+      motherName: this.motherName!.value,
+      spouseName: this.spouseName!.value,
+      address1: this.address1!.value,
+      address2: this.address2!.value,
+      state: this.state!.value,
+      pinCode: this.pinCode!.value,
+      country: this.country!.value,
+      userType: this.userType!.value
 
+    
     }
   }
 
