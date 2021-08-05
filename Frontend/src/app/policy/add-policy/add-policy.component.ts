@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Policy } from 'src/data/policy';
 import { GetPoliciesService } from 'src/app/services/get-policies.service';
+import { PolicySend } from 'src/app/model/policy';
 
 @Component({
   selector: 'app-add-policy',
@@ -12,6 +13,9 @@ import { GetPoliciesService } from 'src/app/services/get-policies.service';
 })
 export class AddPolicyComponent implements OnInit {
   policies !: Policy[];
+  policy !: PolicySend;
+
+  userId = 1
 
   constructor(private router: Router, private fb:FormBuilder, private policyService: GetPoliciesService) { }
 
@@ -57,19 +61,41 @@ export class AddPolicyComponent implements OnInit {
   ngOnInit() {
   }
 
-  addPolicy(policy: Policy): void{
-    if(!policy) {return;}
-    this.policyService.addPolicy(policy).subscribe(
-      policy => {
-        this.policies.push(policy);
-      })
-      this.router.navigate(['/policies']);
+  addPolicy(): void {
+    let body = JSON.stringify(this.policyData());
+    if(!body) {return;}
+    this.policyService.addPolicy(body).subscribe()
+    this.router.navigate(['/policies']);
   }
+
+ 
+
+  // addPolicy(policy: Policy): void{
+  //   if(!policy) {return;}
+  //   this.policyService.addPolicy(policy).subscribe()
+  //   // this.policyService.addPolicy(policy).subscribe(
+  //   //   policy => {
+  //   //     this.policies.push(policy);
+  //   //   })
+  //     this.router.navigate(['/policies']);
+  // }
+
+  policyData(): PolicySend{
+    return this.policy = {
+      policyType: this.policyType!.value,
+      coverName: this.coverName!.value,
+      premium: this.premium!.value,
+      sumInsured: this.sumInsured!.value,
+      coverUpto: this.coverUpto!.value,
+      description: this.description!.value,
+      termsConditions: this.termsConditions!.value,
+      userId: this.userId
+    }
+  }  
+
 
   onBack(){
     this.router.navigate(['/']);
-    //asa
-    //aa
   }
 
 }

@@ -9,15 +9,14 @@ import { Policy } from 'src/data/policy';
 export class GetPoliciesService {
 
   // Route Helper Variables
-  private getPolicyUrl = 'app/data/mock-policy.ts';
-  private addPolicyUrl = '';
+  private getPolicyUrl = 'http://localhost:5000/api/policy';
+  private addPolicyUrl = 'http://localhost:5000/api/policy/add';
   private deleteUrl = '';
-  private searchUrl= '';
+  private searchUrl= 'http://localhost:5000/api/policy';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
-
 
   //get list of all policies available on the portal
   getPolicies(): Observable<Policy[]> {
@@ -25,7 +24,7 @@ export class GetPoliciesService {
   }
 
   //add a new policy to the policy list
-  addPolicy(policy: Policy): Observable<Policy> {
+  addPolicy(policy: String): Observable<Policy> {
     return this.http.post<Policy>(this.addPolicyUrl, policy, this.httpOptions)
   }
 
