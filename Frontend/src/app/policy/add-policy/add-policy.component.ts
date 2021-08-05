@@ -15,13 +15,11 @@ export class AddPolicyComponent implements OnInit {
   policies !: Policy[];
   policy !: PolicySend;
 
-  userId = 1
 
   constructor(private router: Router, private fb:FormBuilder, private policyService: GetPoliciesService) { }
 
   //Creating User Registration Form
   addPolicyForm = this.fb.group({
-    // policyId: ['', [Validators.required]],
     policyType: ['', [Validators.required]],
     coverName: ['', [Validators.required]],
     premium: ['', [Validators.required]],
@@ -32,9 +30,6 @@ export class AddPolicyComponent implements OnInit {
   });  
 
 
-  // get policyId(){
-  //   return this.addPolicyForm.get('policyId')
-  // }
   get policyType(){
     return this.addPolicyForm.get('policyType')
   }
@@ -89,7 +84,7 @@ export class AddPolicyComponent implements OnInit {
       coverUpto: this.coverUpto!.value,
       description: this.description!.value,
       termsConditions: this.termsConditions!.value,
-      userId: this.userId
+      userId: "1"
     }
   }  
 

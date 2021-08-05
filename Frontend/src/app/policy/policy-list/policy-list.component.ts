@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { HousingService } from 'src/app/services/housing.service';
 import { Policy } from 'src/data/policy';
 import { GetPoliciesService } from 'src/app/services/get-policies.service';
+import { PolicySend } from 'src/app/model/policy';
 
 @Component({
   selector: 'app-policy-list',
@@ -21,8 +22,8 @@ export class PolicyListComponent implements OnInit {
     // this.housingService.getHttpProperties().subscribe(resp => console.log(resp))
 
     this.getPolicies.getPolicies().subscribe(
-      policies=>this.policies=policies
-    )
+      policies=>{this.policies=policies}
+    );
 
     console.log(this.policies)
     

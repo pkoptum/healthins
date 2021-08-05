@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, ObservedValuesFromArray, throwError, of } from 'rxjs';
 import { Policy } from 'src/data/policy';
+import { PolicySend } from '../model/policy';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,7 @@ export class GetPoliciesService {
     if(!term.trim()){
       return of([]);
     }
+    console.log(term)
     return this.http.get<Policy[]>(`${this.searchUrl}/?name=${term}`)
   }
 

@@ -17,7 +17,7 @@ export class PolicyCardComponent implements OnInit {
   }
 
   onSubmit(policy: Policy): void{
-    this.deletePolicyService.deletePolicy(policy.policyId).subscribe()
+    this.deletePolicyService.deletePolicy(policy.id).subscribe()
   }
 
 }
