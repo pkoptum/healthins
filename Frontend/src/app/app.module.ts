@@ -18,6 +18,7 @@ import { AuthService } from './services/auth.service';
 import { MypoliciesComponent } from './policy/mypolicies/mypolicies.component';
 import { CustPolicyCardComponent } from './policy/cust-policy-card/cust-policy-card.component';
 import { SearchListComponent } from './policy/search-list/search-list.component';
+import { MyPoliciesComponent } from './user/my-policies/my-policies.component';
 
 
 @NgModule({
