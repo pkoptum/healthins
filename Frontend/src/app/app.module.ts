@@ -16,6 +16,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserServiceService } from './services/user-service.service';
 import { AuthService } from './services/auth.service';
 import { SearchListComponent } from './policy/search-list/search-list.component';
+import { MyPoliciesComponent } from './user/my-policies/my-policies.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SearchListComponent } from './policy/search-list/search-list.component'
       UserLoginComponent,
       UserRegisterComponent,
       AddPolicyComponent,
-      SearchListComponent
+      SearchListComponent,
+      MyPoliciesComponent
    ],
   imports: [
     BrowserModule,
