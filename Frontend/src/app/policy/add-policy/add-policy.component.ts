@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { Policy } from 'src/data/policy';
+import { GetPoliciesService } from 'src/app/services/get-policies.service';
 
 @Component({
   selector: 'app-add-policy',
@@ -9,12 +11,13 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./add-policy.component.css']
 })
 export class AddPolicyComponent implements OnInit {
+  policies !: Policy[];
 
-  constructor(private router: Router, private fb:FormBuilder) { }
+  constructor(private router: Router, private fb:FormBuilder, private policyService: GetPoliciesService) { }
 
   //Creating User Registration Form
   addPolicyForm = this.fb.group({
-    policyId: ['', [Validators.required]],
+    // policyId: ['', [Validators.required]],
     policyType: ['', [Validators.required]],
     coverName: ['', [Validators.required]],
     premium: ['', [Validators.required]],
@@ -25,9 +28,9 @@ export class AddPolicyComponent implements OnInit {
   });  
 
 
-  get policyId(){
-    return this.addPolicyForm.get('policyId')
-  }
+  // get policyId(){
+  //   return this.addPolicyForm.get('policyId')
+  // }
   get policyType(){
     return this.addPolicyForm.get('policyType')
   }
@@ -52,6 +55,15 @@ export class AddPolicyComponent implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  addPolicy(policy: Policy): void{
+    if(!policy) {return;}
+    this.policyService.addPolicy(policy).subscribe(
+      policy => {
+        this.policies.push(policy);
+      })
+      this.router.navigate(['/policies']);
   }
 
   onBack(){

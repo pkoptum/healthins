@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Policy } from 'src/data/policy';
+import { GetPoliciesService } from 'src/app/services/get-policies.service';
 
 @Component({
   selector: 'app-policy-card',
@@ -10,9 +11,13 @@ export class PolicyCardComponent implements OnInit {
 
   @Input() policy !: Policy
 
-  constructor() { }
+  constructor(private deletePolicyService: GetPoliciesService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(policy: Policy): void{
+    this.deletePolicyService.deletePolicy(policy.policyId).subscribe()
   }
 
 }
