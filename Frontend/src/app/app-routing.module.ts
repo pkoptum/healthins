@@ -5,6 +5,7 @@ import { PolicyDetailComponent } from './policy/policy-detail/policy-detail.comp
 import { PolicyListComponent } from './policy/policy-list/policy-list.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
+import { MypoliciesComponent } from './policy/mypolicies/mypolicies.component';
 
 const routes: Routes = [
   {path: '', component: UserLoginComponent, pathMatch: 'full'},
@@ -13,7 +14,9 @@ const routes: Routes = [
   {path: 'policy-detail/:id', component: PolicyDetailComponent},
   {path: 'user/login', component: UserLoginComponent},
   {path: 'user/register', component: UserRegisterComponent},
-  {path: '**', component: PolicyListComponent},
+  {path: 'mypolicies', component: MypoliciesComponent},
+  {path: '**', component: PolicyListComponent}
+  
 ];
 
 @NgModule({
