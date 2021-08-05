@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { HousingService } from 'src/app/services/housing.service';
 import { Policy } from 'src/data/policy';
+import { GetPoliciesService } from 'src/app/services/get-policies.service';
 
 @Component({
   selector: 'app-policy-list',
@@ -11,17 +12,21 @@ import { Policy } from 'src/data/policy';
 })
 export class PolicyListComponent implements OnInit {
 
-  properties: Policy[] = [];
+  policies: Policy[] = [];
 
 
-  constructor(private http: HttpClient, private housingService: HousingService) { }
+  constructor(private http: HttpClient, private housingService: HousingService, private getPolicies: GetPoliciesService) { }
 
   ngOnInit(): void {
     // this.housingService.getHttpProperties().subscribe(resp => console.log(resp))
 
-    this.housingService.getProperties().subscribe(
-      properties=>this.properties=properties
-    );
+    this.getPolicies.getPolicies().subscribe(
+      policies=>this.policies=policies
+    )
+    
+    // this.housingService.getPolicies().subscribe(
+    //   policies=>this.policies=policies
+    // );
   }
 
 }

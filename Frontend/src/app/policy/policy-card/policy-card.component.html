@@ -1,20 +1,18 @@
 
-<div class="card p-4">
-  <div class="card-personal-wrapper">
-
-    <div class="card-body p-2">
-      <h1> {{policy.Name}} </h1>
-      <h2> {{policy.Type}} </h2>
-      <h3> {{policy.Price}} </h3>
+<div class="card border-info card-personal-wrapper">
+    <div class="card-header">{{policy.coverName}}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{policy.policyType}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Get upto Rs.{{policy.sumInsured}} as sum insured</h6>
+    <p class="card-text">{{policy.Description}}.</p>
 
       <ul class="list-inline text-center member-icons">
         <li class="list-inline-item">
-          <button class="btn btn-primary" routerLink="/policy-detail/{{policy.id}}"> <i class="fas fa-info-circle"></i> </button>
+          <button class="btn btn-primary" routerLink="/policy-detail/{{policy.policyId}}"> <i class="fas fa-info-circle"></i> </button>
         </li>
         <li class="list-inline-item">
-          <button class="btn btn-primary"> <i class="fas fa-shopping-cart"></i> </button>
+          <button class="btn btn-primary" (click)="onSubmit(policy)"> <i class="fas fa-trash-alt"></i> </button>
         </li>
       </ul>
     </div>
-  </div>
 </div>

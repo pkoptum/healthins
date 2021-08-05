@@ -1,22 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-
+import { UserServiceService } from 'src/app/services/user-service.service';
+import { User } from 'src/app/model/user';
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
+  
+  user!: User;
+  constructor(private userService: UserServiceService,private http: HttpClient){}
 
+
+  //Option List for Dropdowns
   genderList: any = ['Male', 'Female', 'Other']
-  userList: any = ['Customer', 'Payer', 'Admin']
 
   //CrossValidation Function
   comparePassword: ValidatorFn = (control: AbstractControl) : ValidationErrors | null => {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
 
-    return password && confirmPassword && password.value === confirmPassword.value ? null : {checkPassword: true };
+    return password && confirmPassword && password.value === confirmPassword.value ? null : {identityRevealed: true };
   }
 
   //Creating User Registration Form
@@ -38,8 +44,8 @@ export class UserRegisterComponent implements OnInit {
     state: new FormControl(null, Validators.required),
     pinCode: new FormControl(null, Validators.required),
     country: new FormControl(null, Validators.required),
-    userType: new FormControl(null, Validators.required),
-
+    userType: new FormControl(null),
+  
   }, {validators: this.comparePassword});
   
   //Initializers for all the form fields for displaying validation errors
@@ -101,7 +107,47 @@ export class UserRegisterComponent implements OnInit {
 
   //Submit Form Button
   onSubmit(){
-    console.log(this.registrationForm)
+    var httpOptions={
+      headers:new HttpHeaders({'Content-Type':'application/json'})
+    };
+    let body =JSON.stringify(this.userData());
+
+    this.http.post<any>('http://localhost:5000/api/user/add', body,httpOptions).subscribe(data => {
+        console.log(data);
+        console.log("hi");
+    });
+    console.log(this.registrationForm);
+    if(this.registrationForm.valid){
+
+     // this.user=Object.assign(this.user,this.registrationForm.value);
+      this.userService.addUser(this.userData());
+    }
   }
+  userData(): User{
+    return this.user = {
+      firstName: this.firstName!.value,
+      lastName: this.lastName!.value,
+      email: this.email!.value,
+      password: this.password!.value,
+     
+      
+      mobile: this.mobile!.value,
+      gender: this.gender!.value,
+      dob: this.dob!.value,
+      fatherName: this.fatherName!.value,
+      motherName: this.motherName!.value,
+      spouseName: this.spouseName!.value,
+      address1: this.address1!.value,
+      address2: this.address2!.value,
+      state: this.state!.value,
+      pinCode: this.pinCode!.value,
+      country: this.country!.value,
+      userType: this.userType!.value
+
+    
+    }
+  }
+
+  
 
 }
