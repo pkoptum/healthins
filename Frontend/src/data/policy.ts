@@ -3,5 +3,5 @@ export interface Policy {
   coverName: string;
   policyType: string;
   sumInsured: number;
-  Description: string;
+  description: string;
 }

@@ -12,7 +12,7 @@ export class GetPoliciesService {
   // Route Helper Variables
   private getPolicyUrl = 'http://localhost:5000/api/policy';
   private addPolicyUrl = 'http://localhost:5000/api/policy/add';
-  private deleteUrl = '';
+  private deleteUrl = 'http://localhost:5000/api/policy/delete';
   private searchUrl= 'http://localhost:5000/api/policy';
 
   httpOptions = {
@@ -31,7 +31,7 @@ export class GetPoliciesService {
 
   //Delete a policy from the list
   deletePolicy(id: Number): Observable<Policy> {
-    return this.http.delete<Policy>(this.deleteUrl, this.httpOptions)
+    return this.http.delete<Policy>(`${this.deleteUrl}/${id}`, this.httpOptions)
   }
 
   //search policy in the policy list

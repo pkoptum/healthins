@@ -6,6 +6,6 @@ sumInsured: string,
 coverUpto: string,
 description: string,
 termsConditions: string,
-userId: string
+userId?: string
 }
 

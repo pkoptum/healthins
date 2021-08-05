@@ -14,6 +14,7 @@ import { PolicySend } from 'src/app/model/policy';
 export class AddPolicyComponent implements OnInit {
   policies !: Policy[];
   policy !: PolicySend;
+  id = localStorage.getItem('userId');
 
 
   constructor(private router: Router, private fb:FormBuilder, private policyService: GetPoliciesService) { }
@@ -59,7 +60,11 @@ export class AddPolicyComponent implements OnInit {
   addPolicy(): void {
     let body = JSON.stringify(this.policyData());
     if(!body) {return;}
-    this.policyService.addPolicy(body).subscribe()
+    this.policyService.addPolicy(body).subscribe(
+      policy => {
+        this.policies.push(policy)
+      }
+    )
     this.router.navigate(['/policies']);
   }
 
@@ -84,7 +89,7 @@ export class AddPolicyComponent implements OnInit {
       coverUpto: this.coverUpto!.value,
       description: this.description!.value,
       termsConditions: this.termsConditions!.value,
-      userId: "1"
+      userId: (this.id)?.toString()
     }
   }  
 
