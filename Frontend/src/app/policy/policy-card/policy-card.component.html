@@ -4,13 +4,13 @@
     <div class="card-body">
       <h5 class="card-title">{{policy.policyType}}</h5>
     <h6 class="card-subtitle mb-2 text-muted">Get upto Rs.{{policy.sumInsured}} as sum insured</h6>
-    <p class="card-text">{{policy.Description}}.</p>
+    <p class="card-text">{{policy.description}}.</p>
 
       <ul class="list-inline text-center member-icons">
-        <li class="list-inline-item">
-          <button class="btn btn-primary" routerLink="/policy-detail/{{policy.policyId}}"> <i class="fas fa-info-circle"></i> </button>
+        <li *ngIf = "loggedin()" class="list-inline-item">
+          <button class="btn btn-primary" routerLink="/policy-detail/{{policy.id}}"> <i class="fas fa-info-circle"></i> </button>
         </li>
-        <li class="list-inline-item">
+        <li *ngIf = "loggedin() && isPayer()" class="list-inline-item">
           <button class="btn btn-primary" (click)="onSubmit(policy)"> <i class="fas fa-trash-alt"></i> </button>
         </li>
       </ul>

@@ -69,7 +69,7 @@ export class UserLoginComponent implements OnInit {
         console.log("hey",Response);
         localStorage.setItem('email',users.email);
         localStorage.setItem('userType',users.userType);
-        localStorage.setItem('userId',users.userId);
+        localStorage.setItem('userId',users.id);
 
       }
     )
@@ -77,9 +77,9 @@ export class UserLoginComponent implements OnInit {
     // dummy delete after test 
     //
     //
-    localStorage.setItem('email','aa@aa');
-    localStorage.setItem('userType','payer');
-    localStorage.setItem('userId','1');
+    // localStorage.setItem('email','aa@aa');
+    // localStorage.setItem('userType','payer');
+    // localStorage.setItem('userId','1');
     //
     //
     //
