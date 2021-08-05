@@ -67,11 +67,13 @@ export class UserLoginComponent implements OnInit {
       (Response) =>{
         const users=Response;
         console.log("hey",Response);
-        // localStorage.setItem('email',users.email);
+        localStorage.setItem('email',users.email);
+        localStorage.setItem('userType',users.userType);
+        localStorage.setItem('userId',users.userId);
 
       }
     )
-    console.log("hi",loginForm.value);
+    console.log("asdsad",localStorage);
 
   } 
 
