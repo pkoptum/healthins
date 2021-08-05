@@ -13,6 +13,7 @@ export class GetPoliciesService {
   private addPolicyUrl = '';
   private deleteUrl = '';
   private searchUrl= '';
+  private getDetailUrl = '';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -24,6 +25,9 @@ export class GetPoliciesService {
     return this.http.get<Policy[]>(this.getPolicyUrl)
   }
 
+  getPolicyDetail( id: string ): Observable<Policy>{
+    return this.http.get<Policy>(`${this.getDetailUrl}/?id=${id}`)
+  }
   //add a new policy to the policy list
   addPolicy(policy: Policy): Observable<Policy> {
     return this.http.post<Policy>(this.addPolicyUrl, policy, this.httpOptions)
