@@ -16,6 +16,7 @@ export class UserRegisterComponent implements OnInit {
 
   //Option List for Dropdowns
   genderList: any = ['Male', 'Female', 'Other']
+  userTypeList: any = ['Payer', 'Customer', 'Admin']
 
   //CrossValidation Function
   comparePassword: ValidatorFn = (control: AbstractControl) : ValidationErrors | null => {

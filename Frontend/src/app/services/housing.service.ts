@@ -22,8 +22,8 @@ export class HousingService {
     return this.http.get<string[]>('http://localhost:5000/api/city');
   }
 
-  getProperties(): Observable<Policy[]> {
-    return of(Properties)
+  getPolicies(): Observable<Policy[]> {
+    return of(Policies)
   }
 
   // getHttpProperties(): Observable<HttpResponse<policy[]>> {
