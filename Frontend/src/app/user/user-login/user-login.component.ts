@@ -34,10 +34,22 @@ export class UserLoginComponent implements OnInit {
   get password(){
     return this.loginForm.get('password')
   } 
+
   userDa(): userLogin {
     return this.user = {
       email: this.email!.value,
       password: this.password!.value,
+
+//   onLogin(loginForm: NgForm){
+//     console.log('ffform',loginForm);
+//     const token = this.authService.authUser(loginForm.value);
+//     if(token){
+//       localStorage.setItem('token',token.email)
+//       console.log('login success');
+//     }
+//     else {
+//       console.log('not succ');
+
     }
   }
   onLogin(loginForm: NgForm){

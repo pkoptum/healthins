@@ -1,4 +1,158 @@
-<p>
-  add-policy works!
-</p>
-<button class="btn btn-primary" (click)="onBack()">Back</button>
+<!-- <div class="row">
+  <div class="col-sm-12 col-md-8 m-auto">
+      <div class="card m-auto">
+          <div class="card-header text-white bg-secondary register-header">
+              Add New Policy
+          </div>
+
+          <div class="card-body">
+              <form [formGroup]="addPolicyForm"> -->
+
+                <!-- <div class="form-group">
+                  <div class="row">
+                      <div class="col-3">
+                      <label for="policyID">Policy ID:</label>
+                      </div>
+                      <div class="col-9">
+                      <input type="text" class="form-control" formControlName="policyID" placeholder="Policy ID" [class.is-invalid]="policyID!.invalid && policyID!.touched">
+                      <div *ngIf="policyID!.invalid && policyID!.touched" class="alert alert-danger">
+                          <small *ngIf="policyID!.errors?.required" class="text-danger">Policy ID is required</small>
+                      </div>  
+                    </div>                      
+                  </div>
+                </div> -->
+
+                  <!-- <div class="form-group col-12">
+                      <input type="text" class="form-control" placeholder="Policy Type" formControlName="policyType" [class.is-invalid]="policyType!.invalid && policyType!.touched">
+                      <div *ngIf="policyType!.invalid && policyType!.touched" class="alert alert-danger">
+                          <small class="text-danger">Policy Type is required</small>
+                      </div>   
+                  </div>
+
+                  <div class="form-group col-12">
+                    <input type="text" class="form-control" placeholder="Policy Cover Name" formControlName="coverName" [class.is-invalid]="coverName!.invalid && coverName!.touched">
+                    <div *ngIf="coverName!.invalid && coverName!.touched" class="alert alert-danger">
+                        <small class="text-danger">Policy Cover Name is required</small>
+                    </div>                        
+                </div>
+
+                      <div class="form-group col-12">
+                          <input type="text" class="form-control" formControlName="premium" placeholder="Premium Amount(in Rupees)" [class.is-invalid]="premium!.invalid && premium!.touched">
+                          <div *ngIf="premium!.invalid && premium!.touched" class="alert alert-danger">
+                              <small class="text-danger">Premium Amount is required</small>
+                          </div>  
+                      </div>
+                      <div class="form-group col-12">
+                          <input type="text" class="form-control" formControlName="sumInsured" placeholder="Sum Insured Amount(in Rupees)" [class.is-invalid]="sumInsured!.invalid && sumInsured!.touched">
+                          <div *ngIf="sumInsured!.invalid && sumInsured!.touched" class="alert alert-danger">
+                              <small class="text-danger">Sum Insured Amount is required</small>
+                          </div>  
+                      </div>
+                      <div class="form-group col-12">
+                          <input type="text" class="form-control" formControlName="coverUpto" placeholder="Cover Upto Age" [class.is-invalid]="coverUpto!.invalid && coverUpto!.touched">
+                          <div *ngIf="coverUpto!.invalid && coverUpto!.touched" class="alert alert-danger">
+                              <small class="text-danger">Cover Upto Age is required</small>
+                          </div>  
+                      </div>
+                      <div class="form-group col-12">
+                          <input type="text" class="form-control" formControlName="termsConditions" placeholder="Terms and Conditions" [class.is-invalid]="termsConditions!.invalid && termsConditions!.touched">
+                      </div>
+
+                  <div class="form-group col-12 m-2">
+                      <button type="submit" class="btn btn-primary m-1" (click)="onSubmit()">Save</button>
+                      <button type="reset" class="btn btn-secondary m-1">Cancel</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div> -->
+
+
+
+<!-- <div class="row add-border"> -->
+    <div class="col-sm-12 col-md-10 m-auto">
+        <form [formGroup]="addPolicyForm">
+            <h1 class="add-header">Add New Policy</h1>
+            <div class="row mb-3">
+            <label for="policyID" class="col-sm-2 col-form-label" >Policy ID:</label>
+            <div class="col-sm-10" >
+                <input type="text" class="form-control" id="policyID" formControlName="policyId" [class.is-invalid]="policyId!.invalid && policyId!.touched">
+                <div *ngIf="policyId!.invalid && policyId!.touched" class="alert alert-danger">
+                    <small class="text-danger">Policy ID is required</small>
+                </div> 
+            </div>
+            </div>
+            <div class="row mb-3">
+            <label for="policyType" class="col-sm-2 col-form-label" >Policy Type:</label>
+            <div class="col-sm-10" >
+                <input type="text" class="form-control" id="policyType" formControlName="policyType" [class.is-invalid]="policyType!.invalid && policyType!.touched">
+                <div *ngIf="policyType!.invalid && policyType!.touched" class="alert alert-danger">
+                    <small class="text-danger">Policy Type is required</small>
+                </div> 
+            </div>
+            </div>
+            <div class="row mb-3">
+            <label for="coverName" class="col-sm-2 col-form-label" >Cover Name:</label>
+            <div class="col-sm-10" >
+                <input type="text" class="form-control" id="coverName" formControlName="coverName" [class.is-invalid]="coverName!.invalid && coverName!.touched">
+                <div *ngIf="coverName!.invalid && coverName!.touched" class="alert alert-danger">
+                    <small class="text-danger">Cover Name is required</small>
+                </div> 
+            </div>
+            </div>
+            <div class="row mb-3">
+            <label for="premium" class="col-sm-2 col-form-label" >Premium Amount:</label>
+            <div class="col-sm-10" >
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon2">Rs. </span>
+                <input type="text" class="form-control" id="premium" formControlName="premium" [class.is-invalid]="premium!.invalid && premium!.touched">
+                
+            </div>
+                <div *ngIf="premium!.invalid && premium!.touched" class="alert alert-danger">
+                    <small class="text-danger">Premium Amount is required</small>
+                </div> 
+            </div>
+            </div>
+            <div class="row mb-3">
+            <label for="sumInsured" class="col-sm-2 col-form-label" >Sum Insured Amount:</label>
+            <div class="col-sm-10" >
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon2">Rs. </span>
+                <input type="text" class="form-control" id="sumInsured" formControlName="sumInsured" [class.is-invalid]="sumInsured!.invalid && sumInsured!.touched">
+                
+            </div>
+                <div *ngIf="sumInsured!.invalid && sumInsured!.touched" class="alert alert-danger">
+                    <small class="text-danger">Sum Insured Amount is required</small>
+                </div> 
+            </div>
+            </div>
+            <div class="row mb-3">
+            <label for="coverUpto" class="col-sm-2 col-form-label" >Cover Upto Age:</label>
+            <div class="col-sm-10" >
+                <div class="input-group">
+                <input type="text" class="form-control" id="coverUpto" formControlName="coverUpto" [class.is-invalid]="coverUpto!.invalid && coverUpto!.touched">
+                <span class="input-group-text" id="basic-addon2">years</span></div>
+                <div *ngIf="coverUpto!.invalid && coverUpto!.touched" class="alert alert-danger">
+                    <small class="text-danger">Cover Upto Age is required</small>
+                </div> 
+            </div>
+            </div>
+            <div class="row mb-3">
+            <label for="termsConditions" class="col-sm-2 col-form-label" >Terms & Conditions:</label>
+            <div class="col-sm-10" >
+                <input type="text" class="form-control" id="termsConditions" formControlName="termsConditions" [class.is-invalid]="termsConditions!.invalid && termsConditions!.touched">
+            </div>
+            </div>
+            <div class="row mb-3">
+            <label for="description" class="col-sm-2 col-form-label" >Description:</label>
+            <div class="col-sm-10" >
+                <input type="text" class="form-control" id="description" formControlName="description" [class.is-invalid]="description!.invalid && description!.touched">
+            </div>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-primary" type="button">Create Policy</button>
+              </div>
+        </form>
+</div>
+<!-- </div> -->

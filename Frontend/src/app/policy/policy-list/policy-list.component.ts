@@ -11,7 +11,7 @@ import { Policy } from 'src/data/policy';
 })
 export class PolicyListComponent implements OnInit {
 
-  properties: Policy[] = [];
+  policies: Policy[] = [];
 
 
   constructor(private http: HttpClient, private housingService: HousingService) { }
@@ -19,8 +19,8 @@ export class PolicyListComponent implements OnInit {
   ngOnInit(): void {
     // this.housingService.getHttpProperties().subscribe(resp => console.log(resp))
 
-    this.housingService.getProperties().subscribe(
-      properties=>this.properties=properties
+    this.housingService.getPolicies().subscribe(
+      policies=>this.policies=policies
     );
   }
 

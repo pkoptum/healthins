@@ -1,29 +1,33 @@
 import { Policy } from './policy';
 
-export const Properties: Policy[] = [
+export const Policies: Policy[] = [
   {
-    "id": 1,
-    "Type": "House",
-    "Name": "Gulmohar Villa",
-    "Price": 12000
+    "policyId": 1,
+    "policyType": "Health Insurance",
+    "coverName": "UHGHI Family Cover",
+    "Description": "This plan covers insurance for your family",
+    "sumInsured": 12000
   },
   {
-    "id": 2,
-    "Type": "House",
-    "Name": "Pearl Villa",
-    "Price": 12000
+    "policyId": 2,
+    "policyType": "Health Insurance",
+    "coverName": "UHGHI Individual Insurance",
+    "Description": "This plan covers safety for an individual",
+    "sumInsured": 12000
   },
   {
-    "id": 3,
-    "Type": "Mansion",
-    "Name": "Sky Top Villa",
-    "Price": 12000
+    "policyId": 3,
+    "policyType": "Life Insurance",
+    "coverName": "UHGCP Life Risk Cover",
+    "Description": "Make your family secure, because lift isn't",
+    "sumInsured": 12000
   },
   {
-    "id": 4,
-    "Type": "Tower",
-    "Name": "RKV Towers",
-    "Price": 12000
+    "policyId": 4,
+    "policyType": "Term Insurance",
+    "coverName": "UHGTI Term Cover",
+    "Description": "Best term insurance in the market, providing highest sum insured",
+    "sumInsured": 12000
   }
 ]
 
