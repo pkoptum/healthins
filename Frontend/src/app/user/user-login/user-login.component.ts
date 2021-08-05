@@ -60,10 +60,10 @@ export class UserLoginComponent implements OnInit {
     //   console.log('login success');
     // }
     // else {
-    //   console.log('not succ');
+    //   console.log( 'not succ');
     // }
     
-    this.authService.authUser(loginForm.value).subscribe(
+    const token = this.authService.authUser(loginForm.value).subscribe(
       (Response) =>{
         const users=Response;
         console.log("hey",Response);
@@ -71,6 +71,9 @@ export class UserLoginComponent implements OnInit {
 
       }
     )
+    
+    
+    
     console.log("hi",loginForm.value);
 
   } 

@@ -8,10 +8,10 @@
                 <form  #loginForm='ngForm' (ngSubmit)="onLogin(loginForm)">
                     <div class="form-group col-12">
                         <label></label>
-                        <input class="form-control" #propName="ngModel"  placeholder="Email" required email ngModel name="email" >
-                        <div *ngIf="!propName.valid && propName.touched" class="alert alert-danger">
-                            <div *ngIf="propName.errors?.required" class="text-danger">Email is required </div> 
-                            <div *ngIf="propName.errors?.email" class="text-danger">Enter valid Email address </div>
+                        <input class="form-control" #emailFeild="ngModel"  placeholder="Email" required email ngModel name="email" >
+                        <div *ngIf="!emailFeild.valid && emailFeild.touched" class="alert alert-danger">
+                            <div *ngIf="emailFeild.errors?.required" class="text-danger">Email is required </div> 
+                            <div *ngIf="emailFeild.errors?.email" class="text-danger">Enter valid Email address </div>
                             
                         </div>
                         
