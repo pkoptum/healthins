@@ -11,6 +11,10 @@ export class GetPoliciesService {
 
   // Route Helper Variables
   private getPolicyUrl = 'http://localhost:5000/api/policy';
+
+  private getDetailUrl = '';
+  private getMyPoliciesUrl = '';
+  private buyPolicyUrl = '';
   private addPolicyUrl = 'http://localhost:5000/api/policy/add';
   private deleteUrl = 'http://localhost:5000/api/policy/delete';
   private searchUrl= 'http://localhost:5000/api/policy';
@@ -19,11 +23,23 @@ export class GetPoliciesService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
 
+
+  getMyPolicies(): Observable<Policy[]> {
+    return this.http.get<Policy[]>(this.getMyPoliciesUrl,)
+  }
+
+  buyPolicy(policy: Policy): Observable<Policy> {
+    return this.http.post<Policy>(this.buyPolicyUrl, policy, this.httpOptions)
+  }
+
   //get list of all policies available on the portal
   getPolicies(): Observable<Policy[]> {
     return this.http.get<Policy[]>(this.getPolicyUrl)
   }
 
+  getPolicyDetail( id: string ): Observable<Policy>{
+    return this.http.get<Policy>(`${this.getDetailUrl}/?id=${id}`)
+  }
   //add a new policy to the policy list
   addPolicy(policy: String): Observable<Policy> {
     return this.http.post<Policy>(this.addPolicyUrl, policy, this.httpOptions)

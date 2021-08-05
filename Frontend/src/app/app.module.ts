@@ -15,8 +15,11 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserServiceService } from './services/user-service.service';
 import { AuthService } from './services/auth.service';
+import { MypoliciesComponent } from './policy/mypolicies/mypolicies.component';
+import { CustPolicyCardComponent } from './policy/cust-policy-card/cust-policy-card.component';
 import { SearchListComponent } from './policy/search-list/search-list.component';
 import { MyPoliciesComponent } from './user/my-policies/my-policies.component';
+
 
 @NgModule({
   declarations: [
@@ -28,8 +31,9 @@ import { MyPoliciesComponent } from './user/my-policies/my-policies.component';
       UserLoginComponent,
       UserRegisterComponent,
       AddPolicyComponent,
-      SearchListComponent,
-      MyPoliciesComponent
+      MypoliciesComponent,
+      CustPolicyCardComponent,
+      SearchListComponent
    ],
   imports: [
     BrowserModule,
