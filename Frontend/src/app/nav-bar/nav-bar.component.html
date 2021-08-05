@@ -9,10 +9,10 @@
         <li class="nav-item">
           <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" aria-current="page" routerLink="/policies">Policies</a>
         </li>
-        <li *ngIf = "!isPayer()" class="nav-item">
+        <li *ngIf = "!isPayer()&&loggedin()" class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/rent-policy">Dashboard</a>
         </li>
-        <li *ngIf = "!isPayer()" class="nav-item">
+        <li *ngIf = "!isPayer()&&loggedin()"  class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/add-policy">Add New Policy</a>
         </li>
 
