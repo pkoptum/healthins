@@ -33,7 +33,11 @@ export class NavBarComponent implements OnInit {
 
   loggedin()
   {
-    return localStorage.getItem('userType');
+    if(localStorage.getItem('userType')){
+    return true;
+    }else {
+      return null;
+    }
   }
 
   onLogout()
@@ -48,9 +52,11 @@ export class NavBarComponent implements OnInit {
 
   isPayer()
   {
-    if(localStorage.getItem('userType')=='payer')
+    if(localStorage.getItem('userType'))
     {
-      return localStorage.getItem('userType');
+      
+      return localStorage.getItem('Users.userType');
+      
     }
     else{
       return null;
