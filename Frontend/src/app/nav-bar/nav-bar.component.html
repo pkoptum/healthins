@@ -9,16 +9,16 @@
         <li class="nav-item">
           <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" aria-current="page" routerLink="/policies">Policies</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf = "!isPayer()" class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/rent-policy">Dashboard</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf = "!isPayer()" class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/add-policy">Add New Policy</a>
         </li>
 
       </ul>
             <!-- SEARCH COMPONENT -->
-            <form class="d-flex">
+            <form *ngIf = "!isPayer()" class="d-flex">
               <input class="form-control me-2" placeholder="Search" aria-label="Search" #searchBox (input)="search(searchBox.value)"/>
             </form>
 

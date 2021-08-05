@@ -33,12 +33,28 @@ export class NavBarComponent implements OnInit {
 
   loggedin()
   {
-    return localStorage.getItem('token');
+    return localStorage.getItem('userType');
   }
 
   onLogout()
   {
-    localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    //
+    //
+    // localStorage.clear()      //enable after testing -> it clears the storage to keep app presistent 
+    //
+    //
+  }
+
+  isPayer()
+  {
+    if(localStorage.getItem('userType')=='payer')
+    {
+      return localStorage.getItem('userType');
+    }
+    else{
+      return null;
+    }
   }
 
 }

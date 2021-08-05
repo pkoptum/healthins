@@ -60,10 +60,10 @@ export class UserLoginComponent implements OnInit {
     //   console.log('login success');
     // }
     // else {
-    //   console.log('not succ');
+    //   console.log( 'not succ');
     // }
     
-    this.authService.authUser(loginForm.value).subscribe(
+    const token = this.authService.authUser(loginForm.value).subscribe(
       (Response) =>{
         const users=Response;
         console.log("hey",Response);
@@ -73,7 +73,20 @@ export class UserLoginComponent implements OnInit {
 
       }
     )
-    console.log("asdsad",localStorage);
+
+    // dummy delete after test 
+    //
+    //
+    localStorage.setItem('email','aa@aa');
+    localStorage.setItem('userType','payer');
+    localStorage.setItem('userId','1');
+    //
+    //
+    //
+    // dummy close
+
+
+    console.log("Local Storage ",localStorage);
 
   } 
 
