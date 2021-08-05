@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, ObservedValuesFromArray, throwError, of } from 'rxjs';
 import { Policy } from 'src/data/policy';
 import { PolicySend } from '../model/policy';
+import {PolicyReceive} from '../model/policy';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +34,8 @@ export class GetPoliciesService {
   }
 
   //get list of all policies available on the portal
-  getPolicies(): Observable<Policy[]> {
-    return this.http.get<Policy[]>(this.getPolicyUrl)
+  getPolicies(): Observable<PolicyReceive[]> {
+    return this.http.get<PolicyReceive[]>(this.getPolicyUrl)
   }
 
   getPolicyDetail( id: string ): Observable<Policy>{
@@ -51,13 +52,13 @@ export class GetPoliciesService {
   }
 
   //search policy in the policy list
-  searchPolicy(term: string): Observable<Policy[]> {
+  searchPolicy(term: string): Observable<PolicyReceive[]> {
     console.log("Checking")
     if(!term.trim()){
+      console.log("blank")
       return of([]);
     }
-    console.log(term)
-    return this.http.get<Policy[]>(`${this.searchUrl}/?name=${term}`)
+    return this.http.get<PolicyReceive[]>(`${this.searchUrl}/?name=${term}`)
   }
 
   constructor(private http: HttpClient) { }
