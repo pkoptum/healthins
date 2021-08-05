@@ -9,7 +9,7 @@ import { Policy } from 'src/data/policy';
 export class GetPoliciesService {
 
   // Route Helper Variables
-  private getPolicyUrl = 'app/data/mock-policy.ts';
+  private getPolicyUrl = 'http://localhost:5000/api/policy';
   private addPolicyUrl = '';
   private deleteUrl = '';
   private searchUrl= '';

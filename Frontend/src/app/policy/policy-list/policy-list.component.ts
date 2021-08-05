@@ -20,13 +20,13 @@ export class PolicyListComponent implements OnInit {
   ngOnInit(): void {
     // this.housingService.getHttpProperties().subscribe(resp => console.log(resp))
 
-    // this.getPolicies.getPolicies().subscribe(
-    //   policies=>this.policies=policies
-    // )
-    
-    this.housingService.getPolicies().subscribe(
+    this.getPolicies.getPolicies().subscribe(
       policies=>this.policies=policies
-    );
+    )
+    
+    // this.housingService.getPolicies().subscribe(
+    //   policies=>this.policies=policies
+    // );
   }
 
 }

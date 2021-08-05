@@ -129,8 +129,6 @@ export class UserRegisterComponent implements OnInit {
       lastName: this.lastName!.value,
       email: this.email!.value,
       password: this.password!.value,
-     
-      
       mobile: this.mobile!.value,
       gender: this.gender!.value,
       dob: this.dob!.value,

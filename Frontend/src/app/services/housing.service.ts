@@ -26,22 +26,22 @@ export class HousingService {
     return of(Policies)
   }
 
-  // getHttpProperties(): Observable<HttpResponse<policy[]>> {
+  // getHttpPolicies(): Observable<HttpResponse<policy[]>> {
   //   return this.http.get<policy[]>(this.policyUrl, {observe: 'response'});
   // }
 
-  // getAllProperties(){
+  // getAllPolicies(){
   //   console.log("2");
-  //   return this.http.get('../../data/properties.ts').pipe(
+  //   return this.http.get('../../data/Policies.ts').pipe(
   //     map(data=> {
-  //       const propertiesArray: Array<any> = [];
+  //       const PoliciesArray: Array<any> = [];
   //       for (const id in data) {
   //         if(data.hasOwnpolicy(id)) {
-  //           propertiesArray.push(data.id);
+  //           PoliciesArray.push(data.id);
   //         }
   //       }
 
-  //       return propertiesArray;
+  //       return PoliciesArray;
   //     })
   //   );
   //   console.log("3");
