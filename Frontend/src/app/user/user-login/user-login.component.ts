@@ -3,6 +3,8 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 import { AuthService } from 'src/app/services/auth.service';
 import { HousingService } from 'src/app/services/housing.service';
 import { userLogin } from 'src/app/model/userLogin';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +15,7 @@ import { userLogin } from 'src/app/model/userLogin';
 export class UserLoginComponent implements OnInit {
   public loginForm !: FormGroup;
   user!:userLogin;
-  constructor(private authService: AuthService,private housingService: HousingService) { }
+  constructor(private authService: AuthService,private housingService: HousingService, private router: Router) { }
   cityList!: any[];
   ngOnInit(): void {
     this.housingService.getAllCities().subscribe(data=>{
@@ -70,10 +72,15 @@ export class UserLoginComponent implements OnInit {
         localStorage.setItem('email',users.email);
         localStorage.setItem('userType',users.userType);
         localStorage.setItem('userId',users.id);
-
+        console.log("LS", localStorage)
       }
+
+
     )
 
+    if(localStorage.getItem('userId')) {
+      this.router.navigate(['/policies']);
+    }
     // dummy delete after test 
     //
     //

@@ -54,7 +54,7 @@ export class NavBarComponent implements OnInit {
 
   isPayer()
   {
-    if(localStorage.getItem('userType')=='payer')
+    if(localStorage.getItem('userType')=='Payer')
     {
       
       return localStorage.getItem('userType');
@@ -66,7 +66,7 @@ export class NavBarComponent implements OnInit {
   }
   isCoust()
   {
-    if(localStorage.getItem('userType')=="customer")
+    if(localStorage.getItem('userType')=="Customer")
     {
       return true;
     }
