@@ -37,8 +37,6 @@ export class PolicyDetailComponent implements OnInit {
   buyPolicy(policy: Policy){
 
     this.getPolicies.buyPolicy(policy).subscribe()
-
-    
   }
 
   isPayer()
