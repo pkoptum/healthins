@@ -13,12 +13,13 @@ export class GetPoliciesService {
   // Route Helper Variables
   private getPolicyUrl = 'http://localhost:5000/api/policy';
 
-  private getDetailUrl = '';
+  private getDetailUrl = 'http://localhost:5000/api/policy/detail';
   private getMyPoliciesUrl = '';
   private buyPolicyUrl = '';
   private addPolicyUrl = 'http://localhost:5000/api/policy/add';
   private deleteUrl = 'http://localhost:5000/api/policy/delete';
   private searchUrl= 'http://localhost:5000/api/policy';
+  private updatePolicyUrl = 'http://localhost:5000/api/policy/update';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -38,12 +39,18 @@ export class GetPoliciesService {
     return this.http.get<PolicyReceive[]>(this.getPolicyUrl)
   }
 
-  getPolicyDetail( id: string ): Observable<Policy>{
-    return this.http.get<Policy>(`${this.getDetailUrl}/?id=${id}`)
+  //get detail of a selected policy
+  getPolicyDetail( id: string ): Observable<PolicyReceive>{
+    return this.http.get<PolicyReceive>(`${this.getDetailUrl}/${id}`)
   }
   //add a new policy to the policy list
   addPolicy(policy: String): Observable<Policy> {
     return this.http.post<Policy>(this.addPolicyUrl, policy, this.httpOptions)
+  }
+
+  //update the selected policy
+  updatePolicy(policy: PolicyReceive): Observable<Policy> {
+    return this.http.put<Policy>(`${this.updatePolicyUrl}/${policy.id}`, policy, this.httpOptions)
   }
 
   //Delete a policy from the list
@@ -60,6 +67,7 @@ export class GetPoliciesService {
     }
     return this.http.get<PolicyReceive[]>(`${this.searchUrl}/?name=${term}`)
   }
+
 
   constructor(private http: HttpClient) { }
 }

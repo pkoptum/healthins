@@ -6,6 +6,7 @@ import { PolicyListComponent } from './policy/policy-list/policy-list.component'
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { MypoliciesComponent } from './policy/mypolicies/mypolicies.component';
+import { UpdatePolicyComponent } from './policy/update-policy/update-policy.component';
 
 const routes: Routes = [
   {path: '', component: UserLoginComponent, pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'user/login', component: UserLoginComponent},
   {path: 'user/register', component: UserRegisterComponent},
   {path: 'mypolicies', component: MypoliciesComponent},
+  {path: 'update-policy/:id', component: UpdatePolicyComponent},
   {path: '**', component: PolicyListComponent}
   
 ];
