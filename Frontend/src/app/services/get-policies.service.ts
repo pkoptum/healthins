@@ -27,21 +27,23 @@ export class GetPoliciesService {
 
 
   getMyPolicies(): Observable<Policy[]> {
-    return this.http.get<Policy[]>(this.getMyPoliciesUrl,)
+    return this.http.get<Policy[]>(this.getMyPoliciesUrl,)     // url, user-id
   }
 
   buyPolicy(policy: Policy): Observable<Policy> {
-    return this.http.post<Policy>(this.buyPolicyUrl, policy, this.httpOptions)
+    return this.http.post<Policy>(this.buyPolicyUrl, policy, this.httpOptions)  // urr, policy - id , user-id
   }
 
   //get list of all policies available on the portal
   getPolicies(): Observable<PolicyReceive[]> {
-    return this.http.get<PolicyReceive[]>(this.getPolicyUrl)
+    return this.http.get<PolicyReceive[]>(this.getPolicyUrl)  //url
   }
+
 
   //get detail of a selected policy
   getPolicyDetail( id: string ): Observable<PolicyReceive>{
     return this.http.get<PolicyReceive>(`${this.getDetailUrl}/${id}`)
+
   }
   //add a new policy to the policy list
   addPolicy(policy: String): Observable<Policy> {

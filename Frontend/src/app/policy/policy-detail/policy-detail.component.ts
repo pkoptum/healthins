@@ -34,8 +34,11 @@ export class PolicyDetailComponent implements OnInit {
     )
   
   }
-  onSubmit(policy: Policy): void{
+  buyPolicy(policy: Policy){
+
     this.getPolicies.buyPolicy(policy).subscribe()
+
+    
   }
 
   isPayer()
