@@ -20,7 +20,15 @@ export class PolicyListComponent implements OnInit {
 
   async ngOnInit() {
 
-    await this.getPolicies.getPolicies().subscribe(
+    await this.getAllPolicies();
+
+    // await this.getPolicies.getPolicies().subscribe(
+    //   policies=>{this.policies=policies}
+    // );
+  }
+
+  async getAllPolicies() {
+    this.getPolicies.getPolicies().subscribe(
       policies=>{this.policies=policies}
     );
   }

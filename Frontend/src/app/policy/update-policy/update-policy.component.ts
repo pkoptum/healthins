@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class UpdatePolicyComponent implements OnInit {
   policy !: PolicyReceive;
-  private policyId !: string;
+  policyId !: string;
   updatedPolicy !: PolicyReceive;
   policies !: Policy[];
   id = localStorage.getItem('userId');
@@ -35,16 +35,15 @@ export class UpdatePolicyComponent implements OnInit {
   //Get policy Detail
   async getDetail(){
     this.updateService.getPolicyDetail(this.policyId).subscribe(
-      policy=>this.policy=this.policy
+      policy=>this.policy=policy
       
     )
   }
 
   updatePolicy(): void {
-    console.log("reached function")
-    console.log("Policy", this.policy)
     let body = this.policyData()
     // let body = JSON.stringify(this.policyData());
+    console.log(body)
     if(!body) {return;}
     this.updateService.updatePolicy(body).subscribe(
       policy => {
@@ -90,6 +89,7 @@ export class UpdatePolicyComponent implements OnInit {
   }
   
   policyData(): PolicyReceive{
+    console.log("Policy Update", this.policy)
     return this.updatedPolicy = {
       id: this.policy!.id,
       policyType: this.policyType!.value,

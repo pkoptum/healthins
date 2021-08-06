@@ -52,6 +52,8 @@ export class PolicyDetailComponent implements OnInit {
     }
   }
 
+
+
   getPolicy(){
 
   
