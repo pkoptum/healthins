@@ -13,6 +13,7 @@ import { PolicyReceive } from 'src/app/model/policy';
 })
 export class PolicyDetailComponent implements OnInit {
   public policyId !: string;
+  public UId=localStorage.getItem('userId');
 
   constructor(private route: ActivatedRoute, private router: Router, private getPolicies: GetPoliciesService) { }
  
@@ -34,9 +35,11 @@ export class PolicyDetailComponent implements OnInit {
     )
   
   }
-  buyPolicy(policy: Policy){
-
-    this.getPolicies.buyPolicy(policy).subscribe()
+  buyPolicy(policy: PolicyReceive){
+    console.log("asdasd",policy.id);
+    var body=JSON.stringify({"UId":this.UId,
+  "PolicyId":policy.id});
+    this.getPolicies.buyPolicy(body).subscribe()
   }
 
   isPayer()
