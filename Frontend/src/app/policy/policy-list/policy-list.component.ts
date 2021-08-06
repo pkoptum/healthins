@@ -18,9 +18,9 @@ export class PolicyListComponent implements OnInit {
 
   constructor(private http: HttpClient, private housingService: HousingService, private getPolicies: GetPoliciesService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
 
-    this.getPolicies.getPolicies().subscribe(
+    await this.getPolicies.getPolicies().subscribe(
       policies=>{this.policies=policies}
     );
   }
