@@ -45,12 +45,9 @@ export class UpdatePolicyComponent implements OnInit {
     // let body = JSON.stringify(this.policyData());
     console.log(body)
     if(!body) {return;}
-    this.updateService.updatePolicy(body).subscribe(
-      policy => {
-        this.policies.push(policy)
-      }
-    )
-    this.router.navigate(['/policies']);
+    this.updateService.updatePolicy(body).toPromise().then(() => {
+      this.router.navigate(['/policies']);
+    })
   }    
 
 

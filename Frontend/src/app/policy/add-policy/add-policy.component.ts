@@ -57,28 +57,15 @@ export class AddPolicyComponent implements OnInit {
   ngOnInit() {
   }
 
+
   addPolicy(): void {
     let body = JSON.stringify(this.policyData());
     if(!body) {return;}
-    this.policyService.addPolicy(body).subscribe(
-      policy => {
-        this.policies.push(policy)
-      }
-    )
-    this.router.navigate(['/policies']);
+    this.policyService.addPolicy(body).toPromise().then(() => {
+      this.router.navigate(['/policies']);
+    })
   }
 
- 
-
-  // addPolicy(policy: Policy): void{
-  //   if(!policy) {return;}
-  //   this.policyService.addPolicy(policy).subscribe()
-  //   // this.policyService.addPolicy(policy).subscribe(
-  //   //   policy => {
-  //   //     this.policies.push(policy);
-  //   //   })
-  //     this.router.navigate(['/policies']);
-  // }
 
   policyData(): PolicySend{
     return this.policy = {
