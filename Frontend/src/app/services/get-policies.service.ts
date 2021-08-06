@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, ObservedValuesFromArray, throwError, of } from 'rxjs';
-import { Policy } from 'src/data/policy';
+import { Policy } from 'src/app/model/policy';
 import { PolicySend } from '../model/policy';
 import {PolicyReceive} from '../model/policy';
 
@@ -12,7 +12,7 @@ export class GetPoliciesService {
 
   // Route Helper Variables
   private getPolicyUrl = 'http://localhost:5000/api/policy';
-
+  private getPayerPolicyUrl = 'https://localhost:5000/api/policy/payer';
   private getDetailUrl = 'http://localhost:5000/api/policy/detail';
   private getMyPoliciesUrl = 'http://localhost:5000/api/purchase/mypolicies';
   private buyPolicyUrl = 'http://localhost:5000/api/purchase/add';
@@ -33,6 +33,11 @@ export class GetPoliciesService {
 
   buyPolicy(policy: string): Observable<PolicyReceive> {
     return this.http.post<PolicyReceive>(this.buyPolicyUrl, policy, this.httpOptions)  // urr, policy - id , user-id
+  }
+
+  //get list of all policies created by a particular payer
+  getPayerPolicy(userId:string): Observable<PolicyReceive[]> {
+    return this.http.get<PolicyReceive[]>(`${this.getPayerPolicyUrl}/${userId}`)
   }
 
   //get list of all policies available on the portal

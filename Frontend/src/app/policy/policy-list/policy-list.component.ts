@@ -2,7 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { HousingService } from 'src/app/services/housing.service';
-import { Policy } from 'src/data/policy';
+import { Policy } from 'src/app/model/policy';
 import { GetPoliciesService } from 'src/app/services/get-policies.service';
 import { PolicyReceive } from 'src/app/model/policy';
 
@@ -12,6 +12,7 @@ import { PolicyReceive } from 'src/app/model/policy';
   styleUrls: ['./policy-list.component.css']
 })
 export class PolicyListComponent implements OnInit {
+  userId = localStorage.getItem('userId');
 
   policies: PolicyReceive[] = [];
 
@@ -22,15 +23,15 @@ export class PolicyListComponent implements OnInit {
 
     await this.getAllPolicies();
 
-    // await this.getPolicies.getPolicies().subscribe(
-    //   policies=>{this.policies=policies}
-    // );
   }
 
   async getAllPolicies() {
-    this.getPolicies.getPolicies().subscribe(
-      policies=>{this.policies=policies}
-    );
+    this.getPolicies.getPayerPolicy(this.userId!).subscribe(
+      policies => {this.policies=policies}
+    )
+    // this.getPolicies.getPolicies().subscribe(
+    //   policies=>{this.policies=policies}
+    // );
   }
 
 }

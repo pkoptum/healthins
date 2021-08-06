@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
-import { Policy } from 'src/data/policy';
 import { GetPoliciesService } from '../services/get-policies.service';
 import { PolicyReceive } from '../model/policy';
 import { Router } from '@angular/router';

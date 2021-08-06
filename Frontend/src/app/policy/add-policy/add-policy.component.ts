@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { Policy } from 'src/data/policy';
+import { Policy } from 'src/app/model/policy';
 import { GetPoliciesService } from 'src/app/services/get-policies.service';
 import { PolicyReceive, PolicySend } from 'src/app/model/policy';
 

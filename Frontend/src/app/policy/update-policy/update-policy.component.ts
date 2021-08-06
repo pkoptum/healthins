@@ -4,7 +4,7 @@ import { GetPoliciesService } from 'src/app/services/get-policies.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { Policy } from 'src/data/policy';
+import { Policy } from 'src/app/model/policy';
 import { Observable } from 'rxjs';
 
 @Component({

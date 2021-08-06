@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetPoliciesService } from 'src/app/services/get-policies.service';
-import { Policy } from 'src/data/policy';
+import { Policy } from 'src/app/model/policy';
 import { PolicyReceive } from 'src/app/model/policy';
 
 @Component({

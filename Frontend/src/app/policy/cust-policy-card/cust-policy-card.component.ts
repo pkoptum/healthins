@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Policy } from 'src/data/policy';
+import { Policy } from 'src/app/model/policy';
 import { GetPoliciesService } from 'src/app/services/get-policies.service';
 import { PolicyReceive } from 'src/app/model/policy';
 

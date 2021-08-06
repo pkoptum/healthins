@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HousingService } from 'src/app/services/housing.service';
-import { Policy } from 'src/data/policy';
 import { GetPoliciesService } from 'src/app/services/get-policies.service';
-import { Policies } from 'src/data/mock-policy';
 import { PolicyReceive } from 'src/app/model/policy';
 
 @Component({
