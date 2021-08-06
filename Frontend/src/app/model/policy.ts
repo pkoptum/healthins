@@ -6,7 +6,8 @@ sumInsured: string,
 coverUpto: string,
 description: string,
 termsConditions: string,
-userId?: string
+userId?: string,
+email: string
 }
 
 export interface PolicyReceive {

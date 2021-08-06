@@ -27,8 +27,8 @@ export class GetPoliciesService {
   }
 
 
-  getMyPolicies(): Observable<PolicyReceive[]> {
-    return this.http.get<PolicyReceive[]>(this.getMyPoliciesUrl,)     // url, user-id
+  getMyPolicies(userId : string): Observable<PolicyReceive[]> {
+    return this.http.get<PolicyReceive[]>(`${this.getMyPoliciesUrl}/${userId}`)     // url, user-id
   }
 
   buyPolicy(policy: string): Observable<PolicyReceive> {
@@ -39,7 +39,6 @@ export class GetPoliciesService {
   getPolicies(): Observable<PolicyReceive[]> {
     return this.http.get<PolicyReceive[]>(this.getPolicyUrl)  //url
   }
-
 
   //get detail of a selected policy
   getPolicyDetail( id: string ): Observable<PolicyReceive>{

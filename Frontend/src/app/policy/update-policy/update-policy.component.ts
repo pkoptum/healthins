@@ -21,74 +21,81 @@ export class UpdatePolicyComponent implements OnInit {
 
   constructor(private updateService: GetPoliciesService, private route: ActivatedRoute, private fb:FormBuilder, private router: Router) { }
 
+    // Creating Policy Updation Form
+    updatePolicyForm = this.fb.group({
+      policyType: [ '', [Validators.required]],
+      coverName: [{ value: '', disabled:true}, [Validators.required]],
+      premium: ['', [Validators.required]],
+      sumInsured: ['', [Validators.required]],
+      coverUpto: ['', [Validators.required]],
+      description: [{ value: '', disabled:true}],
+      termsConditions: [''],
+      email: ['']
+    });  
+
   async ngOnInit() {
     this.policyId = (this.route.snapshot.params['id'])
-    await this.getDetail();
-    // await this.updateService.getPolicyDetail(this.policyId).subscribe(
-    //   policy=>this.policy=this.policy
-      
-    // )
-    console.log("Policy Detail", this.policy)
+    await this.getDetail()
+    console.log("Policy Detail", this.policy);    
 
   }
 
   //Get policy Detail
   async getDetail(){
     this.updateService.getPolicyDetail(this.policyId).subscribe(
-      policy=>this.policy=policy
-      
+      (policy) => {
+        this.updatePolicyForm = this.fb.group({
+          policyType: [ policy.policyType, [Validators.required]],
+          coverName: [policy.coverName, [Validators.required]],
+          premium: [policy.premium, [Validators.required]],
+          sumInsured: [policy.sumInsured, [Validators.required]],
+          coverUpto: [policy.coverUpto, [Validators.required]],
+          description: [policy.description],
+          termsConditions: [policy.termsConditions],
+          email: [policy.email]
+        });  
+      }
     )
+
   }
 
   updatePolicy(): void {
     let body = this.policyData()
-    // let body = JSON.stringify(this.policyData());
-    console.log(body)
     if(!body) {return;}
     this.updateService.updatePolicy(body).toPromise().then(() => {
       this.router.navigate(['/policies']);
     })
   }    
 
-
-  // Creating User Registration Form
-  addPolicyForm = this.fb.group({
-    policyType: [ '', [Validators.required]],
-    coverName: ['', [Validators.required]],
-    premium: ['', [Validators.required]],
-    sumInsured: ['', [Validators.required]],
-    coverUpto: ['', [Validators.required]],
-    description: [''],
-    termsConditions: [''],
-  });  
-
-
   get policyType(){
-    return this.addPolicyForm.get('policyType')
+    return this.updatePolicyForm.get('policyType')
   }
   get coverName(){
-    return this.addPolicyForm.get('coverName')
+    return this.updatePolicyForm.get('coverName')
   }
   get premium(){
-    return this.addPolicyForm.get('premium')
+    return this.updatePolicyForm.get('premium')
   }
   get sumInsured(){
-    return this.addPolicyForm.get('sumInsured')
+    return this.updatePolicyForm.get('sumInsured')
   }
   get description(){
-    return this.addPolicyForm.get('description')
+    return this.updatePolicyForm.get('description')
   }
   get termsConditions(){
-    return this.addPolicyForm.get('termsConditions')
+    return this.updatePolicyForm.get('termsConditions')
   }
   get coverUpto(){
-    return this.addPolicyForm.get('coverUpto')
+    return this.updatePolicyForm.get('coverUpto')
+  }
+  get email(){
+    return this.updatePolicyForm.get('email')
   }
   
   policyData(): PolicyReceive{
     console.log("Policy Update", this.policy)
     return this.updatedPolicy = {
-      id: this.policy!.id,
+      id: Number(this.policyId),
       policyType: this.policyType!.value,
       coverName: this.coverName!.value,
       premium: this.premium!.value,
@@ -97,7 +104,7 @@ export class UpdatePolicyComponent implements OnInit {
       description: this.description!.value,
       termsConditions: this.termsConditions!.value,
       userId: (this.id)?.toString(),
-      email: this.policy!.email
+      email: this.email!.value
     }
   }    
 

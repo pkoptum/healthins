@@ -8,16 +8,13 @@
   <h6 class="card-subtitle mb-2 text-muted">Get upto Rs.sum insured as sum insured</h6>
   <p class="card-text">desc</p>
 
-    
+  <button class="btn btn-primary" (click)="buyPolicy(policies)"> Buy </button>
+  <button *ngIf = "isPayer()" routerLink="/update-policy/{{policyId}}" class="btn btn-primary"> Update</button>    
   </div>
 </div>
-<button class="btn btn-primary" (click)="buyPolicy(policies)"> Buy </button>
 
-<p>
-  You have opened {{policyId}}
-</p>
 
-<button *ngIf = "isPayer()" routerLink="/update-policy/{{policyId}}" class="btn btn-primary"> Update</button>
+
 
 <!-- <br/><br/>
 

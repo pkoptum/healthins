@@ -10,11 +10,12 @@ import { PolicyReceive } from 'src/app/model/policy';
 })
 export class MypoliciesComponent implements OnInit {
   policies: PolicyReceive[] = [];
+  userId = localStorage.getItem('userId')
 
   constructor(private getPolicies: GetPoliciesService ) { }
 
   ngOnInit(): void {
-    this.getPolicies.getMyPolicies().subscribe(
+    this.getPolicies.getMyPolicies(this.userId!).subscribe(
       policies=>this.policies=policies
     )
   }

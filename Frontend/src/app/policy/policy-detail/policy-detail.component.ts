@@ -59,24 +59,6 @@ export class PolicyDetailComponent implements OnInit {
 
   getPolicy(){
 
-  
-  
-  // let UserArray = [];
-    // if(localStorage.getItem('Users')){
-    //   UserArray=JSON.parse(localStorage.getItem('Users')!);
-    // }
-    // return UserArray.find((p:any) => p.email === user.email && p.password === user.password);
   }
-
-  
-  // onSelectNext(){
-  //   this.policyId += 1;
-  //   this.router.navigate(['policy-detail/' + this.policyId])
-  // }
-
-  // onSelectBack(){
-  //   this.policyId -= 1;
-  //   this.router.navigate(['policy-detail/' + this.policyId])
-  // }
   
 }

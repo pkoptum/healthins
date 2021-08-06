@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Policy } from 'src/data/policy';
 import { GetPoliciesService } from 'src/app/services/get-policies.service';
-import { PolicySend } from 'src/app/model/policy';
+import { PolicyReceive, PolicySend } from 'src/app/model/policy';
 
 @Component({
   selector: 'app-add-policy',
@@ -15,6 +15,7 @@ export class AddPolicyComponent implements OnInit {
   policies !: Policy[];
   policy !: PolicySend;
   id = localStorage.getItem('userId');
+  email = localStorage.getItem('email');
 
 
   constructor(private router: Router, private fb:FormBuilder, private policyService: GetPoliciesService) { }
@@ -76,7 +77,8 @@ export class AddPolicyComponent implements OnInit {
       coverUpto: this.coverUpto!.value,
       description: this.description!.value,
       termsConditions: this.termsConditions!.value,
-      userId: (this.id)?.toString()
+      userId: (this.id)?.toString(),
+      email: this.email!
     }
   }  
 
