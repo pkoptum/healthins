@@ -11,7 +11,7 @@
     
   </div>
 </div>
-<button class="btn btn-primary" (click)="buyPolicy(policy)"> Buy </button>
+<button class="btn btn-primary" *ngIf = "isCustomer()" (click)="buyPolicy(policies)"> Buy </button>
 
 <p>
   You have opened {{policyId}}
