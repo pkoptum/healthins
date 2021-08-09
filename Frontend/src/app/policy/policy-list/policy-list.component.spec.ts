@@ -4,6 +4,9 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { PolicyListComponent } from './policy-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('PolicyListComponent', () => {
   let component: PolicyListComponent;
@@ -11,6 +14,7 @@ describe('PolicyListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientModule, HttpClientTestingModule, RouterTestingModule],
       declarations: [ PolicyListComponent ]
     })
     .compileComponents();
