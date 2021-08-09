@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { Policy } from 'src/data/policy';
+import { Policy } from 'src/app/model/policy';
 import { GetPoliciesService } from 'src/app/services/get-policies.service';
-import { PolicySend } from 'src/app/model/policy';
+import { PolicyReceive, PolicySend } from 'src/app/model/policy';
 
 @Component({
   selector: 'app-add-policy',
@@ -15,6 +15,7 @@ export class AddPolicyComponent implements OnInit {
   policies !: Policy[];
   policy !: PolicySend;
   id = localStorage.getItem('userId');
+  email = localStorage.getItem('email');
 
 
   constructor(private router: Router, private fb:FormBuilder, private policyService: GetPoliciesService) { }
@@ -57,28 +58,15 @@ export class AddPolicyComponent implements OnInit {
   ngOnInit() {
   }
 
+
   addPolicy(): void {
     let body = JSON.stringify(this.policyData());
     if(!body) {return;}
-    this.policyService.addPolicy(body).subscribe(
-      policy => {
-        this.policies.push(policy)
-      }
-    )
-    this.router.navigate(['/policies']);
+    this.policyService.addPolicy(body).toPromise().then(() => {
+      this.router.navigate(['/policies']);
+    })
   }
 
- 
-
-  // addPolicy(policy: Policy): void{
-  //   if(!policy) {return;}
-  //   this.policyService.addPolicy(policy).subscribe()
-  //   // this.policyService.addPolicy(policy).subscribe(
-  //   //   policy => {
-  //   //     this.policies.push(policy);
-  //   //   })
-  //     this.router.navigate(['/policies']);
-  // }
 
   policyData(): PolicySend{
     return this.policy = {
@@ -89,7 +77,8 @@ export class AddPolicyComponent implements OnInit {
       coverUpto: this.coverUpto!.value,
       description: this.description!.value,
       termsConditions: this.termsConditions!.value,
-      userId: (this.id)?.toString()
+      userId: (this.id)?.toString(),
+      email: this.email!
     }
   }  
 

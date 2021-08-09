@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
-import { Policy } from 'src/data/policy';
 import { GetPoliciesService } from '../services/get-policies.service';
 import { PolicyReceive } from '../model/policy';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,7 +20,7 @@ export class NavBarComponent implements OnInit {
     
   }
 
-  constructor(private searchService: GetPoliciesService) { }
+  constructor(private searchService: GetPoliciesService, private router: Router) { }
 
   ngOnInit() {
     this.heroes$ = this.searchTerms.pipe(
@@ -45,6 +45,7 @@ export class NavBarComponent implements OnInit {
   onLogout()
   {
     localStorage.removeItem('userType');
+    this.router.navigate(['/'])
     //
     //
     // localStorage.clear()      //enable after testing -> it clears the storage to keep app presistent 

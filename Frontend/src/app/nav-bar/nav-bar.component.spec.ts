@@ -2,8 +2,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { GetPoliciesService } from '../services/get-policies.service';
 
 import { NavBarComponent } from './nav-bar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('NavBarComponent', () => {
   let component: NavBarComponent;
@@ -11,7 +15,9 @@ describe('NavBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavBarComponent ]
+      imports: [HttpClientModule, HttpClientTestingModule, RouterTestingModule],
+      declarations: [ NavBarComponent ],
+      providers: [GetPoliciesService]
     })
     .compileComponents();
   }));

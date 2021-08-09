@@ -4,6 +4,11 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { PolicyCardComponent } from './policy-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormBuilder } from '@angular/forms';
+import { GetPoliciesService } from 'src/app/services/get-policies.service';
 
 describe('PolicyCardComponent', () => {
   let component: PolicyCardComponent;
@@ -11,7 +16,9 @@ describe('PolicyCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PolicyCardComponent ]
+      imports: [HttpClientModule, HttpClientTestingModule, RouterTestingModule],
+      declarations: [ PolicyCardComponent ],
+      providers: [GetPoliciesService, FormBuilder]
     })
     .compileComponents();
   }));

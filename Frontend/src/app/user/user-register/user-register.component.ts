@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { User } from 'src/app/model/user';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
@@ -11,7 +12,7 @@ import { HttpClient ,HttpHeaders} from '@angular/common/http';
 export class UserRegisterComponent implements OnInit {
   
   user!: User;
-  constructor(private userService: UserServiceService,private http: HttpClient){}
+  constructor(private userService: UserServiceService,private http: HttpClient, private router: Router){}
 
 
   //Option List for Dropdowns
@@ -122,6 +123,7 @@ export class UserRegisterComponent implements OnInit {
 
      // this.user=Object.assign(this.user,this.registrationForm.value);
       this.userService.addUser(this.userData());
+      this.router.navigate(['/'])
     }
   }
   userData(): User{

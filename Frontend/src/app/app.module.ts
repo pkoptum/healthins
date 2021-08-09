@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -20,6 +20,7 @@ import { CustPolicyCardComponent } from './policy/cust-policy-card/cust-policy-c
 import { SearchListComponent } from './policy/search-list/search-list.component';
 import { MyPoliciesComponent } from './user/my-policies/my-policies.component';
 import { UpdatePolicyComponent } from './policy/update-policy/update-policy.component';
+import { GetPoliciesService } from './services/get-policies.service';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { UpdatePolicyComponent } from './policy/update-policy/update-policy.comp
   providers: [
     HousingService,
     UserServiceService,
-    AuthService
+    AuthService,
+    GetPoliciesService
   ],
   bootstrap: [AppComponent]
 })

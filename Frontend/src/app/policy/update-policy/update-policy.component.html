@@ -73,7 +73,7 @@
 <!-- <div class="row add-border"> -->
     <div class="col-sm-12 col-md-10 m-auto">
         
-        <form [formGroup]="addPolicyForm">
+        <form [formGroup]="updatePolicyForm">
             <h1 class="add-header">Update Policy</h1>
 
             <div class="row mb-3">
@@ -89,9 +89,6 @@
             <label for="coverName" class="col-sm-2 col-form-label" >Cover Name:</label>
             <div class="col-sm-10" >
                 <input type="text" class="form-control" id="coverName" formControlName="coverName" [class.is-invalid]="coverName!.invalid && coverName!.touched">
-                <div *ngIf="coverName!.invalid && coverName!.touched" class="alert alert-danger">
-                    <small class="text-danger">Cover Name is required</small>
-                </div> 
             </div>
             </div>
             <div class="row mb-3">
@@ -99,9 +96,8 @@
             <div class="col-sm-10" >
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon2">Rs. </span>
-                <input type="text" class="form-control" id="premium" formControlName="premium" [class.is-invalid]="premium!.invalid && premium!.touched">
-                
-            </div>
+                    <input type="text" class="form-control" id="premium" formControlName="premium" [class.is-invalid]="premium!.invalid && premium!.touched">
+                </div>
                 <div *ngIf="premium!.invalid && premium!.touched" class="alert alert-danger">
                     <small class="text-danger">Premium Amount is required</small>
                 </div> 
@@ -148,4 +144,3 @@
               </div>
         </form>
 </div>
-<!-- </div> -->

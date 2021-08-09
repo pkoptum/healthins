@@ -6,7 +6,8 @@ sumInsured: string,
 coverUpto: string,
 description: string,
 termsConditions: string,
-userId?: string
+userId?: string,
+email: string
 }
 
 export interface PolicyReceive {
@@ -22,3 +23,11 @@ export interface PolicyReceive {
     email: string
 }
 
+export interface Policy {
+    id: number;
+    coverName: string;
+    policyType: string;
+    sumInsured: number;
+    description: string;
+  }
+  
