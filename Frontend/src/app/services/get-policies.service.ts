@@ -14,24 +14,25 @@ export class GetPoliciesService {
   private getPolicyUrl = 'http://localhost:5000/api/policy';
 
   private getDetailUrl = 'http://localhost:5000/api/policy/detail';
-  private getMyPoliciesUrl = '';
-  private buyPolicyUrl = '';
+  private getMyPoliciesUrl = 'http://localhost:5000/api/purchase/mypolicies';
+  private buyPolicyUrl = 'http://localhost:5000/api/purchase/add';
   private addPolicyUrl = 'http://localhost:5000/api/policy/add';
   private deleteUrl = 'http://localhost:5000/api/policy/delete';
   private searchUrl= 'http://localhost:5000/api/policy';
   private updatePolicyUrl = 'http://localhost:5000/api/policy/update';
 
   httpOptions = {
+
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
 
 
-  getMyPolicies(): Observable<Policy[]> {
-    return this.http.get<Policy[]>(this.getMyPoliciesUrl,)     // url, user-id
+  getMyPolicies(): Observable<PolicyReceive[]> {
+    return this.http.get<PolicyReceive[]>(this.getMyPoliciesUrl,)     // url, user-id
   }
 
-  buyPolicy(policy: Policy): Observable<Policy> {
-    return this.http.post<Policy>(this.buyPolicyUrl, policy, this.httpOptions)  // urr, policy - id , user-id
+  buyPolicy(policy: string): Observable<PolicyReceive> {
+    return this.http.post<PolicyReceive>(this.buyPolicyUrl, policy, this.httpOptions)  // urr, policy - id , user-id
   }
 
   //get list of all policies available on the portal

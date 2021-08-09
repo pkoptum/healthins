@@ -10,7 +10,7 @@
         <li *ngIf = "loggedin()" class="list-inline-item">
           <button class="btn btn-primary" routerLink="/policy-detail/{{policy.id}}"> <i class="fas fa-info-circle"></i> </button>
         </li>
-        <li *ngIf = "loggedin()" class="list-inline-item">
+        <li *ngIf = "loggedin() && !isCoust()" class="list-inline-item">
           <button class="btn btn-primary" (click)="onSubmit(policy)"> <i class="fas fa-trash-alt"></i> </button>
         </li>
       </ul>

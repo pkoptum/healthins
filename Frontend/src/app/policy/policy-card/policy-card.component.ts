@@ -35,4 +35,15 @@ export class PolicyCardComponent implements OnInit {
       return null;
     }
   }
+
+  isCoust()
+  {
+    if(localStorage.getItem('userType')=="Customer")
+    {
+      return true;
+    }
+    else{
+      return false;
+    }
+  }  
 }
