@@ -53,6 +53,31 @@ export class PolicyDetailComponent implements OnInit {
   }
 
 
+  isCustomer()
+  {
+    if(localStorage.getItem('userType')=='Customer')
+    {
+      
+      return localStorage.getItem('userType');
+      
+    }
+    else{
+      return null;
+    }
+  }
+
+  isAdmin()
+  {
+    if(localStorage.getItem('userType')=='Admin')
+    {
+      
+      return localStorage.getItem('userType');
+      
+    }
+    else{
+      return null;
+    }
+  }
 
   getPolicy(){
 

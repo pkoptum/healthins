@@ -12,6 +12,7 @@
   <button *ngIf = "isPayer()" routerLink="/update-policy/{{policyId}}" class="btn btn-primary"> Update</button>    
   </div>
 </div>
+<button class="btn btn-primary" *ngIf = "isCustomer()" (click)="buyPolicy(policies)"> Buy </button>
 
 
 
