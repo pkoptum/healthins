@@ -4,6 +4,7 @@ import { Observable, ObservedValuesFromArray, throwError, of } from 'rxjs';
 import { Policy } from 'src/app/model/policy';
 import { PolicySend } from '../model/policy';
 import {PolicyReceive} from '../model/policy';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,12 +28,22 @@ export class GetPoliciesService {
   }
 
 
-  getMyPolicies(userId : string): Observable<PolicyReceive[]> {
-    return this.http.get<PolicyReceive[]>(`${this.getMyPoliciesUrl}/${userId}`)     // url, user-id
-  }
+  //Error handling function
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error); 
+      console.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
+  }  
+
 
   buyPolicy(policy: string): Observable<PolicyReceive> {
     return this.http.post<PolicyReceive>(this.buyPolicyUrl, policy, this.httpOptions)  // urr, policy - id , user-id
+  }
+
+  getMyPolicies(userId : string): Observable<PolicyReceive[]> {
+    return this.http.get<PolicyReceive[]>(`${this.getMyPoliciesUrl}/${userId}`)     // url, user-id
   }
 
   //get list of all policies created by a particular payer
@@ -42,7 +53,9 @@ export class GetPoliciesService {
 
   //get list of all policies available on the portal
   getPolicies(): Observable<PolicyReceive[]> {
-    return this.http.get<PolicyReceive[]>(this.getPolicyUrl)  //url
+    return this.http.get<PolicyReceive[]>(this.getPolicyUrl).pipe(
+      catchError(this.handleError<PolicyReceive[]>('get all policies', []))
+    )
   }
 
   //get detail of a selected policy
@@ -51,18 +64,18 @@ export class GetPoliciesService {
 
   }
   //add a new policy to the policy list
-  addPolicy(policy: String): Observable<Policy> {
-    return this.http.post<Policy>(this.addPolicyUrl, policy, this.httpOptions)
+  addPolicy(policy: String): Observable<PolicyReceive> {
+    return this.http.post<PolicyReceive>(this.addPolicyUrl, policy, this.httpOptions)
   }
 
   //update the selected policy
-  updatePolicy(policy: PolicyReceive): Observable<Policy> {
-    return this.http.put<Policy>(`${this.updatePolicyUrl}/${policy.id}`, policy, this.httpOptions)
+  updatePolicy(policy: PolicyReceive): Observable<PolicyReceive> {
+    return this.http.put<PolicyReceive>(`${this.updatePolicyUrl}/${policy.id}`, policy, this.httpOptions)
   }
 
   //Delete a policy from the list
-  deletePolicy(id: Number): Observable<Policy> {
-    return this.http.delete<Policy>(`${this.deleteUrl}/${id}`, this.httpOptions)
+  deletePolicy(id: Number): Observable<PolicyReceive> {
+    return this.http.delete<PolicyReceive>(`${this.deleteUrl}/${id}`, this.httpOptions)
   }
 
   //search policy in the policy list
