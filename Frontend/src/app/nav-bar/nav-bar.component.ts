@@ -14,6 +14,8 @@ export class NavBarComponent implements OnInit {
   heroes$ !: Observable<PolicyReceive[]>
   private searchTerms = new Subject<string>();
 
+  componentName = "naval"
+
   search(term: string): void{
     console.log(this.searchTerms)
     this.searchTerms.next(term);

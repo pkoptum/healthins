@@ -7,15 +7,30 @@ import { PolicyListComponent } from './policy-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { GetPoliciesService } from 'src/app/services/get-policies.service';
+import { of } from 'rxjs';
 
 describe('PolicyListComponent', () => {
   let component: PolicyListComponent;
   let fixture: ComponentFixture<PolicyListComponent>;
+  // let getPayerPolicyStub: Partial<GetPoliciesService>
 
   beforeEach(async(() => {
+
+    //
+    //stub The getpoliciesService
+    // getPayerPolicyStub = {
+    //   getPayerPolicy(){
+
+    //   }
+
+    // }
+
+
     TestBed.configureTestingModule({
       imports: [HttpClientModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [ PolicyListComponent ]
+      declarations: [ PolicyListComponent ],
+      providers: [GetPoliciesService]
     })
     .compileComponents();
   }));
@@ -24,9 +39,47 @@ describe('PolicyListComponent', () => {
     fixture = TestBed.createComponent(PolicyListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    spyOn(window.localStorage,'getItem').and.callFake( function(){
+      return JSON.stringify({"test":"test"});
+    })
+  //   let store = {
+      
+
+  //   };
+  //   const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) => obj[key];
+  //   const mockLocalStorage = {
+  //   getItem: (key: string): string => {
+  //     return key in store ? store[key] : null;
+  //   },
+  //   setItem: (key: string, value: string) => {
+  //     store[key] = `${value}`;
+  //   },
+  //   removeItem: (key: string) => {
+  //     delete store[key];
+  //   },
+  //   clear: () => {
+  //     store = {};
+  //   }
+  // };
   });
+
+  it('should call getpayerpolicy and return[]',()=> {
+    let fix = TestBed.createComponent(PolicyListComponent);
+    let comp = fix.debugElement.componentInstance;
+    let getpoliciesService = fix.debugElement.injector.get(GetPoliciesService);
+    let stub = spyOn(getpoliciesService,"getPayerPolicy").and.callFake(()=> {
+      return of([ ])
+    })
+    comp.getAllPolicies();
+    expect(comp.policies).toEqual([]);
+  })
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('localstorage should have been called', () => {
+    expect(window.localStorage.getItem).toHaveBeenCalled();
+  });
+
+  
 });
