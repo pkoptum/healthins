@@ -40,7 +40,7 @@ describe('PolicyListComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     spyOn(window.localStorage,'getItem').and.callFake( function(){
-      return JSON.stringify({"test":"test"});
+      return "test";
     })
   //   let store = {
       
@@ -71,14 +71,16 @@ describe('PolicyListComponent', () => {
       return of([ ])
     })
     comp.getAllPolicies();
-    expect(comp.policies).toEqual([]);
+    expect(comp.policies).toEqual([ ]);
   })
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('localstorage should have been called', () => {
-    expect(window.localStorage.getItem).toHaveBeenCalled();
+
+  //testing mock local storage
+  it('localstorage should return Test', () => {
+    expect(window.localStorage.getItem).toBe("test");
   });
 
   

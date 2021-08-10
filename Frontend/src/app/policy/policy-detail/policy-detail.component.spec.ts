@@ -7,6 +7,9 @@ import { PolicyDetailComponent } from './policy-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { GetPoliciesService } from 'src/app/services/get-policies.service';
+import { of } from 'rxjs';
+import { PolicyReceive } from 'src/app/model/policy';
 
 describe('PolicyDetailComponent', () => {
   let component: PolicyDetailComponent;
@@ -15,7 +18,8 @@ describe('PolicyDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [ PolicyDetailComponent ]
+      declarations: [ PolicyDetailComponent ],
+      providers: [GetPoliciesService]
     })
     .compileComponents();
   }));
@@ -25,6 +29,32 @@ describe('PolicyDetailComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+
+  it('should call getpayerpolicy ',()=> {
+    let fix = TestBed.createComponent(PolicyDetailComponent);
+    let comp = fix.debugElement.componentInstance;
+    let getpoliciesService = fix.debugElement.injector.get(GetPoliciesService);
+    // let stub1 = spyOn(getpoliciesService,"getPolicyDetail").and.callFake(()=> {
+    //   return of()
+    // })
+    // comp.ngOnInit();
+    comp.policyId = "1";
+    comp.UId = "1";
+
+    // let pDummy: PolicyReceive;
+    // pDummy.id =1;
+
+
+    let stub = spyOn(getpoliciesService,"buyPolicy").and.callFake( () =>{
+      return of()
+    } );
+
+
+
+    comp.buyPolicy1();
+    expect(getpoliciesService.buyPolicy).toHaveBeenCalled();
+  })
 
   it('should create', () => {
     expect(component).toBeTruthy();
