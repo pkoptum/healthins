@@ -1,5 +1,9 @@
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from 'src/app/services/auth.service';
+import { FormsModule } from '@angular/forms';
 import { UserLoginComponent } from './user-login.component';
 
 describe('UserLoginComponent', () => {
@@ -8,7 +12,9 @@ describe('UserLoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserLoginComponent ]
+      imports: [HttpClientModule, HttpClientTestingModule, RouterTestingModule, FormsModule],
+      declarations: [ UserLoginComponent ],
+      providers: [AuthService]
     })
     .compileComponents();
   });
