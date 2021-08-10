@@ -31,4 +31,8 @@ describe('NavBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Checking component name',()=>{
+    expect(component.componentName).toBe("naval")
+  })
 });
