@@ -19,9 +19,9 @@ export class PolicyCardComponent implements OnInit {
   }
 
   onSubmit(policy: PolicyReceive): void{
-    this.deletePolicyService.deletePolicy(policy.id).subscribe()
-    window.location.reload()
-    this.router.navigate(['/policies']);
+    this.deletePolicyService.deletePolicy(policy.id).subscribe();
+    // window.location.reload();
+    // this.router.navigate(['/policies']);
   }
 
   loggedin() {
