@@ -32,4 +32,18 @@ describe('AddPolicyComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('h1 should be Add New Policy', () => {
+    const bannerDe: DebugElement = fixture.debugElement ;
+    const myElement: HTMLElement = bannerDe.nativeElement;
+    const h1 = myElement.querySelector('h1')!;
+    expect(h1.textContent).toEqual('Add New Policy');
+  })
+
+  it('button should be to add new policy', () => {
+    const bannerDe: DebugElement = fixture.debugElement;
+    const myElement: HTMLElement = bannerDe.nativeElement;
+    const button = myElement.querySelector('button')!;
+    expect(button.textContent).toEqual('Create Policy');  
+  })
 });

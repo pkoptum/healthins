@@ -23,6 +23,7 @@ export class PolicyListComponent implements OnInit {
   }
 
   async getAllPolicies() {
+    console.log("userid", this.userId)
     this.getPolicies.getPayerPolicy(this.userId!).subscribe(
       policies => {this.policies=policies}
     )

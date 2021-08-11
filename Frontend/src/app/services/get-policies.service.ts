@@ -13,7 +13,7 @@ export class GetPoliciesService {
 
   // Route Helper Variables
   private getPolicyUrl = 'http://localhost:5000/api/policy';
-  private getPayerPolicyUrl = 'https://localhost:5000/api/policy/mycreate';
+  private getPayerPolicyUrl = 'http://localhost:5000/api/policy/mycreate';
   private getDetailUrl = 'http://localhost:5000/api/policy/detail';
   private getMyPoliciesUrl = 'http://localhost:5000/api/purchase/mypolicies';
   private buyPolicyUrl = 'http://localhost:5000/api/purchase/add';
