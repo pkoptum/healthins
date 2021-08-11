@@ -4,6 +4,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { MypoliciesComponent } from './mypolicies.component';
+import { GetPoliciesService } from 'src/app/services/get-policies.service';
+import { of } from 'rxjs';
 
 describe('MypoliciesComponent', () => {
   let component: MypoliciesComponent;
@@ -12,7 +14,8 @@ describe('MypoliciesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [ MypoliciesComponent ]
+      declarations: [ MypoliciesComponent ],
+      providers: [GetPoliciesService]
     })
     .compileComponents();
   });
@@ -22,8 +25,13 @@ describe('MypoliciesComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+  
   it('should create', () => {
-    expect(component).toBeTruthy();
+    let getpoliciesService = fixture.debugElement.injector.get(GetPoliciesService);
+    let stub = spyOn(getpoliciesService,"getMyPolicies").and.callFake( () =>{
+      return of();
+    } );
+    component.ngOnInit();
+    expect(getpoliciesService.getMyPolicies).toHaveBeenCalled();
   });
 });

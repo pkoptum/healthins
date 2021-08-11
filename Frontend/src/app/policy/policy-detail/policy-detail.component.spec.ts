@@ -44,7 +44,19 @@ describe('PolicyDetailComponent', () => {
 
     // let pDummy: PolicyReceive;
     // pDummy.id =1;
-
+    const pDummy: PolicyReceive = {
+      id:1,
+      policyType:"",
+      premium:"",
+      sumInsured:"",
+      coverName:"",
+      coverUpto:"",
+      termsConditions:"",
+      description:"",
+      userId:" ",
+      email:""
+    
+  };
 
     let stub = spyOn(getpoliciesService,"buyPolicy").and.callFake( () =>{
       return of()
@@ -52,7 +64,7 @@ describe('PolicyDetailComponent', () => {
 
 
 
-    comp.buyPolicy1();
+    comp.buyPolicy(pDummy);
     expect(getpoliciesService.buyPolicy).toHaveBeenCalled();
   })
 
