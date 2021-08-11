@@ -9,6 +9,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { GetPoliciesService } from 'src/app/services/get-policies.service';
 import { FormBuilder } from '@angular/forms';
+import { PolicySend } from 'src/app/model/policy';
+import { of } from 'rxjs';
 
 describe('AddPolicyComponent', () => {
   let component: AddPolicyComponent;
@@ -29,8 +31,29 @@ describe('AddPolicyComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should add data', () => {
+
+    const policydata:PolicySend= {
+      
+      policyType:"test",
+      premium:"test",
+      sumInsured:"test",
+      coverName:"test",
+      coverUpto:"test",
+      termsConditions:"test",
+      description:"test",
+      userId:" test",
+      email:"test@test.c"
+    
+
+    }
+    
+    let getpoliciesService = fixture.debugElement.injector.get(GetPoliciesService);
+    let stub = spyOn(getpoliciesService,"addPolicy").and.callFake( () =>{
+      return of();
+    } );
+    component.addPolicy();
+    expect(getpoliciesService.addPolicy).toHaveBeenCalled();
   });
 
   it('h1 should be Add New Policy', () => {

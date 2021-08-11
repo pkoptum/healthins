@@ -35,32 +35,34 @@ describe('PolicyListComponent', () => {
     .compileComponents();
   }));
 
+
+
   beforeEach(() => {
+    
     fixture = TestBed.createComponent(PolicyListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    spyOn(window.localStorage,'getItem').and.callFake( function(){
-      return JSON.stringify({"test":"test"});
-    })
-  //   let store = {
-      
-
-  //   };
-  //   const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) => obj[key];
-  //   const mockLocalStorage = {
-  //   getItem: (key: string): string => {
-  //     return key in store ? store[key] : null;
-  //   },
-  //   setItem: (key: string, value: string) => {
-  //     store[key] = `${value}`;
-  //   },
-  //   removeItem: (key: string) => {
-  //     delete store[key];
-  //   },
-  //   clear: () => {
-  //     store = {};
-  //   }
-  // };
+    interface StringArray {
+      [index: string]: string;
+    }
+    let store: StringArray={};
+    const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) => obj[key];
+    const mockLocalStorage = {
+    getItem: (key: string): string => {
+      return key in store ? store[key] : "";
+    },
+    setItem: (key: string, value: string) => {
+      store[key] = `${value}`;
+    },
+    removeItem: (key: string) => {
+      delete store[key];
+    },
+    clear: () => {
+      store = {};
+    }
+    };
+    spyOn(localStorage,'getItem').and.callFake(mockLocalStorage.getItem);
+    spyOn(localStorage,'setItem').and.callFake(mockLocalStorage.setItem);
   });
 
   it('should call getpayerpolicy and return[]',()=> {
@@ -71,14 +73,17 @@ describe('PolicyListComponent', () => {
       return of([ ])
     })
     comp.getAllPolicies();
-    expect(comp.policies).toEqual([]);
-  })
+    expect(comp.policies).toEqual([ ]);
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('localstorage should have been called', () => {
-    expect(window.localStorage.getItem).toHaveBeenCalled();
+
+  //testing mock local storage
+  it('localstorage should return Test', () => {
+    localStorage.setItem('tempkey', 'anothertoken');
+    expect(localStorage.getItem('tempkey')).toBe('anothertoken');
   });
 
   

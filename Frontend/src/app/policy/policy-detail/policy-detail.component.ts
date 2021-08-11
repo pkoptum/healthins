@@ -33,9 +33,8 @@ export class PolicyDetailComponent implements OnInit {
   
   }
   buyPolicy(policy: PolicyReceive){
-    console.log("asdasd",policy.id);
-    var body=JSON.stringify({"UId":this.UId,
-  "PolicyId":policy.id});
+    // console.log("asdasd",policy.id);
+    var body=JSON.stringify({"UId":this.UId,"PolicyId":policy.id});
     this.getPolicies.buyPolicy(body).subscribe()
   }
 

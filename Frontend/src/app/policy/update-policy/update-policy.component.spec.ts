@@ -25,7 +25,7 @@ describe('UpdatePolicyComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create hello', () => {
     expect(component).toBeTruthy();
   });
 });
