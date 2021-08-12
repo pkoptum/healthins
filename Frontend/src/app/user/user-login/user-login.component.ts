@@ -53,7 +53,7 @@ export class UserLoginComponent implements OnInit {
 
     }
   }
-  onLogin(loginForm: NgForm){
+  async onLogin(loginForm: NgForm){
     // console.log(loginForm.value);
     // const token = this.authService.authUser(loginForm.value);
     // if(token){
@@ -64,41 +64,23 @@ export class UserLoginComponent implements OnInit {
     //   console.log( 'not succ');
     // }
     
-    const token = this.authService.authUser(loginForm.value).subscribe(
-      (Response) =>{
-        const users=Response;
-        console.log("hey",Response);
-        localStorage.setItem('email',users.email);
-        localStorage.setItem('userType',users.userType);
-        localStorage.setItem('userId',users.id);
-        console.log("LS", localStorage)
+    const token = await this.authService.authUser(loginForm.value).subscribe(
+      (Response) => {
+        const users = Response;
+        console.log("hey", Response);
+        localStorage.setItem('email', users.email);
+        localStorage.setItem('userType', users.userType);
+        localStorage.setItem('userId', users.id);
+        console.log("LS", localStorage);
       }
-
-
     )
 
     if(localStorage.getItem('userId')) {
       this.router.navigate(['/policies']);
     }
-    // dummy delete after test 
-    //
-    //
-
-    // localStorage.setItem('email','aa@aa');
-    // localStorage.setItem('userType','payer');
-    // localStorage.setItem('userId','1');
-    //
-    //
-    //
-    // dummy close
-
 
     console.log("Local Storage ",localStorage);
 
   } 
-
-  // onSubmit(){
-  //   console.log(this.loginForm)
-  // }
 
 }

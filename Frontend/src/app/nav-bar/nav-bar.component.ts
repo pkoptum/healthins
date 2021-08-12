@@ -50,7 +50,7 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/'])
     //
     //
-    // localStorage.clear()      //enable after testing -> it clears the storage to keep app presistent 
+    localStorage.clear()      //enable after testing -> it clears the storage to keep app presistent 
     //
     //
   }
