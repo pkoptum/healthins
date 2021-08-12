@@ -46,7 +46,7 @@ describe('PolicyListComponent', () => {
       [index: string]: string;
     }
     let store: StringArray={};
-    const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) => obj[key];
+//    const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) => obj[key];
     const mockLocalStorage = {
     getItem: (key: string): string => {
       return key in store ? store[key] : "";

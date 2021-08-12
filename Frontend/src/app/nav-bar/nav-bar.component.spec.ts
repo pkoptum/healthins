@@ -26,8 +26,34 @@ describe('NavBarComponent', () => {
     fixture = TestBed.createComponent(NavBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    interface StringArray {
+      [index: string]: string;
+    }
+    let store: StringArray={};
+    const mockLocalStorage = {
+    getItem: (key: string): string => {
+      return key in store ? store[key] : "";
+    },
+    setItem: (key: string, value: string) => {
+      store[key] = `${value}`;
+    },
+    removeItem: (key: string) => {
+      delete store[key];
+    },
+    clear: () => {
+      store = {};
+    }
+    };
+    spyOn(localStorage,'getItem').and.callFake(mockLocalStorage.getItem);
+    spyOn(localStorage,'setItem').and.callFake(mockLocalStorage.setItem);
   });
 
+
+  it('return admin from local storage', () => {
+    localStorage.setItem('key', 'admin');
+    expect(localStorage.getItem('key')).toBe('admin');
+    
+  });
   it('should create', () => {
     expect(component).toBeTruthy();
   });
